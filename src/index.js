@@ -12,9 +12,7 @@ const root = createRoot(rootElement);
 
 root.render(
   <Suspense fallback={<Loader />}>
-    <HashRouter>
       <App />
-    </HashRouter>
   </Suspense>
 );
 
