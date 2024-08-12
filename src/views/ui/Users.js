@@ -12,8 +12,6 @@ import user5 from "../../assets/images/users/user5.jpg";
 const usersAvatar = [user1, user2, user3, user4, user5]
 const Users = () => {
 
-    
-
 
 
     useEffect(() => {
