@@ -14,25 +14,25 @@ const Login = () => {
 
 
   useEffect(() => {
-    setLoading(true)
-    console.log('FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF', isAuthenticated);
+    // setLoading(true)
+    // console.log('FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF', isAuthenticated);
 
-    if (isAuthenticated) {
-      console.log('CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC', isAuthenticated);
+    // if (isAuthenticated) {
+    //   console.log('CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC', isAuthenticated);
       navigate('/starter'); // Redirect to a protected route or home page
-      setLoading(false)
-    } else {
-      checkToken()
-    }
+    //   setLoading(false)
+    // } else {
+    //   checkToken()
+    // }
   }, [])
 
   const checkToken = () => {
     console.log('qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq');
 
-    const authToken = localStorage.getItem('isAuthenticated');
-    const token = localStorage.getItem('token');
-    console.log('token in Login',token);
-    if (token) {
+    // const authToken = localStorage.getItem('isAuthenticated');
+    // const token = localStorage.getItem('token');
+    // console.log('token in Login',token);
+    if (1) {
       setLoading(false)
       navigate('/starter');
     }
