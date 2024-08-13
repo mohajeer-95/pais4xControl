@@ -65,7 +65,7 @@ const Carousel = () => {
   const getCarousel = async (brokersWid) => {
     var carouselIds = []
     setLoading(true)
-    const response = await callApiWithToken('http://lab.app2serve.com/public/api/broker-carousel', {}, 'GET');
+    const response = await callApiWithToken('https://lab.app2serve.com/public/api/broker-carousel', {}, 'GET');
 
     await response.broker_carousel.map((obj, index) => {
       carouselIds.push(obj.broker_id)
@@ -129,7 +129,7 @@ const Carousel = () => {
   };
 
   const addToCarousel = async (id) => {
-    const url = 'http://lab.app2serve.com/public/api/broker-carousel';
+    const url = 'https://lab.app2serve.com/public/api/broker-carousel';
     const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjg2MDllNzQ0OTgxZjMwNzIyZTllNmRlMDQyMjY2MDJmNDM0NTk3ODBlNzUzM2FiNDc3MGFhMjhiZDFjZjRhMjU5NGNhYjI3MGJhM2UxNzUiLCJpYXQiOjE3MTc2MjA2NDQsIm5iZiI6MTcxNzYyMDY0NCwiZXhwIjoxNzQ5MTU2NjQ0LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.cRRWjwpsvG5cYb-5n_YpfrOHfoWzRTEoYndZffA08MrJxWnv4KZ1mezT6PaKxPdDNEnRQaeqPSdo4Wtf5xWrlgpZTnNQmd8-_xXjz_LJHIXdGtT5YosL6If__d1psx6nsW8ckyXx2mKWF2hiM6a1c65keOgtmiEwCsADxBYZv-VAE1eZz8eQHaYmc_dBFZnfevZqaDOcYjSdijRBGXYGCb65-wolO08is5cf6jq-r6m0pWKQ1Gwq8h5BRV4HBqxLVJK-2Mbk2hHF0EsxrUSIE9wTKxqBcH0SL4wOA8GWeiQUSlAncTkwvGQwFBdGVMou67XDz5UeiN0ek6JayemFZcpq-fkHP7l1fNpT_6SgQSRaIxca2rx9Q_nQYrjIczzuvPchbs9MbOdKdEpuolOWAbI4VBGS0FvMiXF596LCLuyAnnAC2YppkMF6AepxMBWtvCpYgL_Kr6KK4e-39_7tzhe1nMZsIRg-2jEYkHv8TB1vr4VaN4IikA6gEVlfml51VW6aiej2YkY4WtdJSeVAOhPgcPYX396v7awfW7liQz4TOIS0sxSaFTTlCrKvqxBz676uzmqxq0oUqTBm_4vlAirm1iluAXP9NwxYKHxIF8SNHaKtsBvMIzjaN79pBHmQdvRc_mJRf-Z9y5Wzn0-m6LmM2c60WA0Hu-vquTPZmbc'; // Your actual token
 
     const raw = JSON.stringify({ broker_id: id });
@@ -172,7 +172,7 @@ const Carousel = () => {
     };
 
     try {
-      const response = await fetch(`http://lab.app2serve.com/public/api/broker-carousel/${id}`, requestOptions);
+      const response = await fetch(`https://lab.app2serve.com/public/api/broker-carousel/${id}`, requestOptions);
       // if (!response.ok) {
       //   throw new Error('Network response was not ok');
       // }

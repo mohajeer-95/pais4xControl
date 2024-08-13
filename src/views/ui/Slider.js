@@ -25,7 +25,7 @@ const SliderList = () => {
     };
 
     try {
-      const response = await fetch("http://lab.app2serve.com/public/api/slider", requestOptions);
+      const response = await fetch("https://lab.app2serve.com/public/api/slider", requestOptions);
       const result = await response.json();
       setSliders(result.sliders);
     } catch (error) {
@@ -47,7 +47,7 @@ const SliderList = () => {
     };
 
     try {
-      const response = await fetch(`http://lab.app2serve.com/public/api/slider/${id}`, requestOptions);
+      const response = await fetch(`https://lab.app2serve.com/public/api/slider/${id}`, requestOptions);
       if (response.ok) {
         setSliders(sliders.filter(slider => slider.id !== id));
       } else {
@@ -110,7 +110,7 @@ const SliderList = () => {
     };
 
     try {
-      const response = await fetch("http://lab.app2serve.com/public/api/slider", requestOptions);
+      const response = await fetch("https://lab.app2serve.com/public/api/slider", requestOptions);
       const result = await response.json();
       if (result.status === 1) {
         setSuccessMessage('Slider added successfully!');
@@ -182,7 +182,7 @@ const SliderList = () => {
             {sliders.map(slider => (
               <tr key={slider.id}>
                 <td><img
-                  src={`http://lab.app2serve.com/storage/app/public/${slider.image}`}
+                  src={`https://lab.app2serve.com/storage/app/public/${slider.image}`}
                   alt={slider.link} style={{ height: '60px' }} /></td>
                 <td>{slider.id}</td>
                 <td><a href={slider.link}>{slider.link}</a></td>
@@ -200,7 +200,7 @@ const SliderList = () => {
         {sliders.map(slider => (
           <Card key={slider.id} className="mb-3">
             <CardImg top
-              src={`http://lab.app2serve.com/storage/app/public/${slider.image}`}
+              src={`https://lab.app2serve.com/storage/app/public/${slider.image}`}
               alt={slider.link} />
             <CardBody>
               <CardText>ID: {slider.id}</CardText>
