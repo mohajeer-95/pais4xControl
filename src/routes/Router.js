@@ -16,7 +16,7 @@ const Breadcrumbs = lazy(() => import("../views/ui/Breadcrumbs"));
 
 const AppRouter = ({ isAuthenticated, handleLogin, handleLogout }) => {
   return (
-    <Router basename="/pais4xcontrol">
+    <Router>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route
