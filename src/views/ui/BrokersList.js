@@ -527,7 +527,7 @@ const BrokersList = () => {
     };
 
     try {
-      const response = await fetch("https://lab.app2serve.com/public/api/brokers", requestOptions);
+      const response = await fetch("http://lab.app2serve.com/public/api/brokers", requestOptions);
       const result = await response.json();
       console.log('response', response);
       console.log(result);
@@ -584,7 +584,7 @@ const BrokersList = () => {
     };
 
     try {
-      const response = await fetch(`https://lab.app2serve.com/public/api/broker/${id}`, requestOptions);
+      const response = await fetch(`http://lab.app2serve.com/public/api/broker/${id}`, requestOptions);
       const result = await response.json();
       console.log(result);
       if (result.status) {
@@ -673,7 +673,7 @@ const BrokersList = () => {
     };
     console.log('requestOptions', requestOptions);
     try {
-      const response = await fetch('https://lab.app2serve.com/public/api/broker-account-type', requestOptions);
+      const response = await fetch('http://lab.app2serve.com/public/api/broker-account-type', requestOptions);
       if (response.ok) {
         const result = await response.text();
         console.log(result);

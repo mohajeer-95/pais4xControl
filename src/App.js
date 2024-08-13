@@ -1,27 +1,13 @@
-import { useState } from 'react';
-import AppRouter from './routes/Router';
-import { AuthProvider } from './routes/AuthContext'; // Adjust path as needed
+import { useRoutes } from 'react-router-dom';
+import Themeroutes from './routes/Router';
+import { AuthProvider } from './../src/routes/AuthContext'; // Adjust path as needed
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  const handleLogin = () => {
-    setIsAuthenticated(true);
-  };
-
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-  };
+  const routing = useRoutes(Themeroutes);
 
   return (
     <AuthProvider>
-      <div className="dark">
-        <AppRouter
-          isAuthenticated={isAuthenticated}
-          handleLogin={handleLogin}
-          handleLogout={handleLogout}
-        />
-      </div>
+      <div className="dark">{routing}</div>
     </AuthProvider>
   );
 };

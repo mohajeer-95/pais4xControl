@@ -15,11 +15,14 @@ const Login = () => {
 
   useEffect(() => {
     setLoading(true)
+    console.log('FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF', isAuthenticated);
 
     if (isAuthenticated) {
       console.log('CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC', isAuthenticated);
       navigate('/starter'); // Redirect to a protected route or home page
       setLoading(false)
+    } else {
+      checkToken()
     }
   }, [])
 
@@ -55,7 +58,7 @@ const Login = () => {
     };
 
     try {
-      const response = await fetch("https://lab.app2serve.com/public/api/admin/login", requestOptions);
+      const response = await fetch("http://lab.app2serve.com/public/api/admin/login", requestOptions);
 
       const result = await response.json();
 
