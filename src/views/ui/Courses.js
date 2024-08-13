@@ -70,7 +70,7 @@ const BrokersList = () => {
   const getCourses = async () => {
     var brokersWid = []
     setLoading(true)
-    const response = await callApiWithToken('https://lab.app2serve.com/public/api/courses', {}, 'GET');
+    const response = await callApiWithToken('http://lab.app2serve.com/public/api/courses', {}, 'GET');
     brokersWid = await response.courses
     await brokersWid.map((obj, index) => {
       obj.id = index + 1;
@@ -171,7 +171,7 @@ const BrokersList = () => {
       redirect: "follow",
     };
 
-    fetch(`https://lab.app2serve.com/public/api/courses-status/${id}`, requestOptions)
+    fetch(`http://lab.app2serve.com/public/api/courses-status/${id}`, requestOptions)
       .then((response) => response.text())
       .then((result) =>
         getCourses())
@@ -363,7 +363,7 @@ const BrokersList = () => {
     };
 
     try {
-      const response = await fetch(`https://lab.app2serve.com/public/api/courses/${id}`, requestOptions);
+      const response = await fetch(`http://lab.app2serve.com/public/api/courses/${id}`, requestOptions);
 
       if (1 == 2) {
         throw new Error('Network response was not ok');
@@ -416,7 +416,7 @@ const BrokersList = () => {
     };
 
     try {
-      const response = await fetch("https://lab.app2serve.com/public/api/courses", requestOptions);
+      const response = await fetch("http://lab.app2serve.com/public/api/courses", requestOptions);
       const result = await response.text();
       console.log(result);
       setFormData(initialFormData)

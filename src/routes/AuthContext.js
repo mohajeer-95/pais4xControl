@@ -26,8 +26,8 @@ export const AuthProvider = ({ children }) => {
 
     // Check authentication status on initial load
     React.useEffect(() => {
-        // const token = localStorage.getItem('isAuthenticated');
-        if (1) {
+        const token = localStorage.getItem('isAuthenticated');
+        if (token) {
             setIsAuthenticated(true);
         }
     }, []);

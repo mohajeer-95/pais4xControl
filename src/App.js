@@ -1,15 +1,29 @@
-import { useRoutes } from 'react-router-dom';
-import Themeroutes from './routes/Router';
-// import { AuthProvider } from './../src/routes/AuthContext'; // Adjust path as needed
+import { useState } from 'react';
+import AppRouter from './routes/Router';
+import { AuthProvider } from './routes/AuthContext'; // Adjust path as needed
 
 const App = () => {
-  const routing = useRoutes(Themeroutes);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+  };
 
   return (
-      <div className="dark">{routing}</div>
+    <AuthProvider>
+      <div className="dark">
+        <AppRouter
+          isAuthenticated={isAuthenticated}
+          handleLogin={handleLogin}
+          handleLogout={handleLogout}
+        />
+      </div>
+    </AuthProvider>
   );
 };
 
 export default App;
-
-//kakkaka

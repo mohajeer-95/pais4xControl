@@ -14,25 +14,22 @@ const Login = () => {
 
 
   useEffect(() => {
-    // setLoading(true)
-    // console.log('FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF', isAuthenticated);
+    setLoading(true)
 
-    // if (isAuthenticated) {
-    //   console.log('CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC', isAuthenticated);
+    if (isAuthenticated) {
+      console.log('CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC', isAuthenticated);
       navigate('/starter'); // Redirect to a protected route or home page
-    //   setLoading(false)
-    // } else {
-    //   checkToken()
-    // }
+      setLoading(false)
+    }
   }, [])
 
   const checkToken = () => {
     console.log('qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq');
 
-    // const authToken = localStorage.getItem('isAuthenticated');
-    // const token = localStorage.getItem('token');
-    // console.log('token in Login',token);
-    if (1) {
+    const authToken = localStorage.getItem('isAuthenticated');
+    const token = localStorage.getItem('token');
+    console.log('token in Login',token);
+    if (token) {
       setLoading(false)
       navigate('/starter');
     }
@@ -58,7 +55,7 @@ const Login = () => {
     };
 
     try {
-      const response = await fetch("https://lab.app2serve.com/public/api/admin/login", requestOptions);
+      const response = await fetch("http://lab.app2serve.com/public/api/admin/login", requestOptions);
 
       const result = await response.json();
 

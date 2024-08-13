@@ -53,7 +53,7 @@ const Users = () => {
         };
 
         try {
-            const response = await fetch("https://lab.app2serve.com/public/api/users", requestOptions);
+            const response = await fetch("http://lab.app2serve.com/public/api/users", requestOptions);
             if (!response.status) {
                 throw new Error('Network response was not ok');
             }
@@ -118,7 +118,7 @@ const Users = () => {
             redirect: "follow",
         };
 
-        fetch("https://lab.app2serve.com/public/api/payments", requestOptions)
+        fetch("http://lab.app2serve.com/public/api/payments", requestOptions)
             .then((response) => response.text())
             .then((result) => {
                 resetPaymentForm();
@@ -151,7 +151,7 @@ const Users = () => {
             redirect: "follow",
         };
 
-        fetch("https://lab.app2serve.com/public/api/cashback", requestOptions)
+        fetch("http://lab.app2serve.com/public/api/cashback", requestOptions)
             .then((response) => response.text())
             .then((result) => {
                 resetCashbackForm()

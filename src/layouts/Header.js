@@ -20,7 +20,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../routes/AuthContext'; // Adjust path as needed
 
 const Header = () => {
-  // const { logout, isAuthenticated } = useAuth();
+  const { logout, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -35,7 +35,7 @@ const Header = () => {
   };
 
   const logOut = () => {
-  //   logout(); // Update authentication status
+    logout(); // Update authentication status
     navigate('/login'); // Redirect to login page
   }
   return (
@@ -74,7 +74,7 @@ const Header = () => {
         <Nav className="me-auto" navbar>
 
         </Nav>
-        <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+        {isAuthenticated && <Dropdown isOpen={dropdownOpen} toggle={toggle}>
           <DropdownToggle color="transparent">
             <img
               src={user1}
@@ -88,7 +88,7 @@ const Header = () => {
               <DropdownItem >Logout</DropdownItem>
             </Link>
           </DropdownMenu>
-        </Dropdown>
+        </Dropdown>}
       </Collapse>
     </Navbar>
   );
