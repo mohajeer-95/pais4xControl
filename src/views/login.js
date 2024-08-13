@@ -55,7 +55,7 @@ const Login = () => {
     };
 
     try {
-      const response = await fetch("http://lab.app2serve.com/public/api/admin/login", requestOptions);
+      const response = await fetch("https://lab.app2serve.com/public/api/admin/login", requestOptions);
 
       const result = await response.json();
 

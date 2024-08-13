@@ -175,7 +175,7 @@ payment_methods
 //     myHeaders.append('Authorization', `Bearer ${token}`);
 
 //     try {
-//       const response = await fetch('http://lab.app2serve.com/public/api/slider', {
+//       const response = await fetch('https://lab.app2serve.com/public/api/slider', {
 //         method: 'POST',
 //         headers: myHeaders,
 //         body: formData
@@ -310,7 +310,7 @@ const ImageUploadForm = () => {
       redirect: "follow",
     };
 
-    fetch("http://lab.app2serve.com/public/api/slider", requestOptions)
+    fetch("https://lab.app2serve.com/public/api/slider", requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.error(error));
@@ -384,7 +384,7 @@ https://github.com/mohajeer-95/pais4xControl.git' not found
 //       };
 
 //       try {
-//         const response = await fetch("http://lab.app2serve.com/public/api/slider", requestOptions);
+//         const response = await fetch("https://lab.app2serve.com/public/api/slider", requestOptions);
 //         const result = await response.json();
 //         setData(result.sliders);
 //       } catch (error) {
@@ -428,7 +428,7 @@ https://github.com/mohajeer-95/pais4xControl.git' not found
 //               <tr key={slider.id}>
 //                 <td>{slider.id}</td>
 //                 <td><img
-//                   src={`http://lab.app2serve.com/storage/app/public/${slider.image}`}
+//                   src={`https://lab.app2serve.com/storage/app/public/${slider.image}`}
 //                   alt="slider" height="60" /></td>
 //                 <td>{slider.link}</td>
 //                 <td>
@@ -447,7 +447,7 @@ https://github.com/mohajeer-95/pais4xControl.git' not found
 //         {data.map(slider => (
 //           <Card key={slider.id} className="mb-3">
 //             <CardImg top width="100%"
-//               src={`http://lab.app2serve.com/storage/app/public/${slider.image}`}
+//               src={`https://lab.app2serve.com/storage/app/public/${slider.image}`}
 //               alt="slider" />
 //             <CardBody>
 //               <CardTitle>ID: {slider.id}</CardTitle>
@@ -490,7 +490,7 @@ const SliderList = () => {
     };
 
     try {
-      const response = await fetch("http://lab.app2serve.com/public/api/slider", requestOptions);
+      const response = await fetch("https://lab.app2serve.com/public/api/slider", requestOptions);
       const result = await response.json();
       setSliders(result.sliders);
     } catch (error) {
@@ -513,7 +513,7 @@ const SliderList = () => {
     };
 
     try {
-      const response = await fetch(`http://lab.app2serve.com/public/api/slider/${id}`, requestOptions);
+      const response = await fetch(`https://lab.app2serve.com/public/api/slider/${id}`, requestOptions);
       if (response.ok) {
         setSliders(sliders.filter(slider => slider.id !== id));
       } else {
