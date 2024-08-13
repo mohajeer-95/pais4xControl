@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.366b4a7c.css",
-    "main.js": "/static/js/main.840654d5.js",
-    "static/js/879.74eef1f3.chunk.js": "/static/js/879.74eef1f3.chunk.js",
+    "main.css": "/static/css/main.4828d6ca.css",
+    "main.js": "/static/js/main.9c89e932.js",
+    "static/js/879.c1fea6a9.chunk.js": "/static/js/879.c1fea6a9.chunk.js",
     "static/js/431.65d1aae3.chunk.js": "/static/js/431.65d1aae3.chunk.js",
-    "static/js/263.c9ab2461.chunk.js": "/static/js/263.c9ab2461.chunk.js",
+    "static/js/263.0a199f2a.chunk.js": "/static/js/263.0a199f2a.chunk.js",
     "static/js/442.cf1f8e60.chunk.js": "/static/js/442.cf1f8e60.chunk.js",
     "static/js/380.d0aa4437.chunk.js": "/static/js/380.d0aa4437.chunk.js",
     "static/js/600.72cec1a9.chunk.js": "/static/js/600.72cec1a9.chunk.js",
@@ -37,11 +37,11 @@
     "static/media/user4.jpg": "/static/media/user4.6ac95ef9bc0c027733ea.jpg",
     "static/media/materialprowhite.svg": "/static/media/materialprowhite.827ad48a3e5b1f385f2f3c32e6823127.svg",
     "index.html": "/index.html",
-    "main.366b4a7c.css.map": "/static/css/main.366b4a7c.css.map",
-    "main.840654d5.js.map": "/static/js/main.840654d5.js.map",
-    "879.74eef1f3.chunk.js.map": "/static/js/879.74eef1f3.chunk.js.map",
+    "main.4828d6ca.css.map": "/static/css/main.4828d6ca.css.map",
+    "main.9c89e932.js.map": "/static/js/main.9c89e932.js.map",
+    "879.c1fea6a9.chunk.js.map": "/static/js/879.c1fea6a9.chunk.js.map",
     "431.65d1aae3.chunk.js.map": "/static/js/431.65d1aae3.chunk.js.map",
-    "263.c9ab2461.chunk.js.map": "/static/js/263.c9ab2461.chunk.js.map",
+    "263.0a199f2a.chunk.js.map": "/static/js/263.0a199f2a.chunk.js.map",
     "442.cf1f8e60.chunk.js.map": "/static/js/442.cf1f8e60.chunk.js.map",
     "380.d0aa4437.chunk.js.map": "/static/js/380.d0aa4437.chunk.js.map",
     "600.72cec1a9.chunk.js.map": "/static/js/600.72cec1a9.chunk.js.map",
@@ -63,7 +63,7 @@
     "850.b3e3b050.chunk.css.map": "/static/css/850.b3e3b050.chunk.css.map"
   },
   "entrypoints": [
-    "static/css/main.366b4a7c.css",
-    "static/js/main.840654d5.js"
+    "static/css/main.4828d6ca.css",
+    "static/js/main.9c89e932.js"
   ]
 }
