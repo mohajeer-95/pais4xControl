@@ -71,9 +71,9 @@ const initialFormDataWithData = {
   avg_spread_on_EURUSD_val_1: '20',
   avg_spread_on_EURUSD_val_2: '30',
   avg_spread_on_EURUSD_val_3: '40',
-  commissions_on_FX_val_1: '0',
-  commissions_on_FX_val_2: '0',
-  commissions_on_FX_val_3: '0',
+  commissions_on_FX_val_1: '6',
+  commissions_on_FX_val_2: '2',
+  commissions_on_FX_val_3: '3',
   FX_margin_bonus: '0,01 LOT',
   FX_scalping_account: '0,01 LOT',
   FX_floating_bonus: '0,01 LOT',
@@ -407,8 +407,8 @@ const BrokersList = () => {
       headerAlign: 'center',
     },
     {
-      field: 'date_added',
-      headerName: 'Date added',
+      field: 'avg_rating',
+      headerName: 'Rate',
       width: 200,
       editable: false,
       type: 'string',
@@ -798,7 +798,7 @@ const BrokersList = () => {
                               </Input>
                             ) : (
                               <Input
-                                type="text"
+                                type={fieldName === 'description' ? "textarea" : "text"}
                                 id={fieldName}
                                 name={fieldName}
                                 value={formData[fieldName]}

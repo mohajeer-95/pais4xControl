@@ -72,7 +72,7 @@ import Slider from "../views/ui/Slider"
 import Courses from "../views/ui/Courses"
 import Tables from "../views/ui/Tables"
 import Forms from "../views/ui/Forms"
-import Breadcrumbs from "../views/ui/Breadcrumbs"
+import RequestLinks from "../views/ui/RequestLinks"
 
 /*****Routes******/
 
@@ -91,7 +91,7 @@ const ThemeRoutes = [
       { path: "/courses", element: <ProtectedRoute element={<Courses />} /> },
       { path: "/table", element: <ProtectedRoute element={<Tables />} /> },
       { path: "/forms", element: <ProtectedRoute element={<Forms />} /> },
-      { path: "/breadcrumbs", element: <ProtectedRoute element={<Breadcrumbs />} /> },
+      { path: "/requestLinks", element: <RequestLinks element={<RequestLinks />} /> },
     ],
   },
 ];

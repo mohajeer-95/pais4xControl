@@ -25,6 +25,11 @@ const navigation = [
     icon: "bi bi-hdd-stack",
   },
   {
+    title: "Request Links",
+    href: "/requestLinks",
+    icon: "bi bi-link",
+  },
+  {
     title: "Slider",
     href: "/slider",
     icon: "bi bi-card-text",
@@ -34,20 +39,16 @@ const navigation = [
     href: "/courses",
     icon: "bi bi-columns",
   },
-  // {
-  //   title: "Table",
-  //   href: "/table",
-  //   icon: "bi bi-layout-split",
-  // },
+
   // {
   //   title: "Forms",
   //   href: "/forms",
   //   icon: "bi bi-textarea-resize",
   // },
   // {
-  //   title: "Breadcrumbs",
-  //   href: "/breadcrumbs",
-  //   icon: "bi bi-link",
+  //   title: "Table",
+  //   href: "/table",
+  //   icon: "bi bi-layout-split",
   // },
   // {
   //   title: "Login",

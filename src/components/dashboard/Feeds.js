@@ -11,37 +11,37 @@ import {
 
 const FeedData = [
   {
-    title: "Cras justo odio",
+    title: "Total number of Broker",
     icon: "bi bi-bell",
     color: "primary",
     date: "6 minute ago",
   },
   {
-    title: "New user registered.",
+    title: "Total number of Users",
     icon: "bi bi-person",
     color: "info",
     date: "6 minute ago",
   },
   {
-    title: "Server #1 overloaded.",
+    title: "Total links Request",
     icon: "bi bi-hdd",
     color: "danger",
     date: "6 minute ago",
   },
   {
-    title: "New order received.",
+    title: "Total number of Slider",
     icon: "bi bi-bag-check",
     color: "success",
     date: "6 minute ago",
   },
   {
-    title: "Cras justo odio",
+    title: "Total number of Courses",
     icon: "bi bi-bell",
     color: "dark",
     date: "6 minute ago",
   },
   {
-    title: "Server #1 overloaded.",
+    title: "Total Carousel number",
     icon: "bi bi-hdd",
     color: "warning",
     date: "6 minute ago",
