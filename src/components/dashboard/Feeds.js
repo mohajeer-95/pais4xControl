@@ -29,7 +29,7 @@ const FeedData = [
     date: "6 minute ago",
   },
   {
-    title: "Total number of Slider",
+    title: "Total number of Banners",
     icon: "bi bi-bag-check",
     color: "success",
     date: "6 minute ago",

@@ -30,8 +30,18 @@ const navigation = [
     icon: "bi bi-link",
   },
   {
-    title: "Slider",
-    href: "/slider",
+    title: "Cash Back List",
+    href: "/cashBackList",
+    icon: "bi bi-link",
+  },
+  {
+    title: "Payment List",
+    href: "/paymentList",
+    icon: "bi bi-link",
+  },
+  {
+    title: "Banner",
+    href: "/banner",
     icon: "bi bi-card-text",
   },
   {

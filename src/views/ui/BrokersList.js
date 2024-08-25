@@ -188,7 +188,7 @@ const BrokersList = () => {
 
 
 
-  
+
   const [addError, setAddError] = useState('')
   const [responseCash, setresponseCash] = useState([])
   const [loading, setLoading] = useState(false)
@@ -196,7 +196,6 @@ const BrokersList = () => {
 
   //form
   const imageUrl = 'https://lab.app2serve.com/storage/app/public/'
-
 
 
   const [accountType, setAccountType] = useState(initialFormAccountType);
@@ -648,6 +647,7 @@ const BrokersList = () => {
 
   const handleSubmitAccountType = async (e) => {
     const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjg2MDllNzQ0OTgxZjMwNzIyZTllNmRlMDQyMjY2MDJmNDM0NTk3ODBlNzUzM2FiNDc3MGFhMjhiZDFjZjRhMjU5NGNhYjI3MGJhM2UxNzUiLCJpYXQiOjE3MTc2MjA2NDQsIm5iZiI6MTcxNzYyMDY0NCwiZXhwIjoxNzQ5MTU2NjQ0LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.cRRWjwpsvG5cYb-5n_YpfrOHfoWzRTEoYndZffA08MrJxWnv4KZ1mezT6PaKxPdDNEnRQaeqPSdo4Wtf5xWrlgpZTnNQmd8-_xXjz_LJHIXdGtT5YosL6If__d1psx6nsW8ckyXx2mKWF2hiM6a1c65keOgtmiEwCsADxBYZv-VAE1eZz8eQHaYmc_dBFZnfevZqaDOcYjSdijRBGXYGCb65-wolO08is5cf6jq-r6m0pWKQ1Gwq8h5BRV4HBqxLVJK-2Mbk2hHF0EsxrUSIE9wTKxqBcH0SL4wOA8GWeiQUSlAncTkwvGQwFBdGVMou67XDz5UeiN0ek6JayemFZcpq-fkHP7l1fNpT_6SgQSRaIxca2rx9Q_nQYrjIczzuvPchbs9MbOdKdEpuolOWAbI4VBGS0FvMiXF596LCLuyAnnAC2YppkMF6AepxMBWtvCpYgL_Kr6KK4e-39_7tzhe1nMZsIRg-2jEYkHv8TB1vr4VaN4IikA6gEVlfml51VW6aiej2YkY4WtdJSeVAOhPgcPYX396v7awfW7liQz4TOIS0sxSaFTTlCrKvqxBz676uzmqxq0oUqTBm_4vlAirm1iluAXP9NwxYKHxIF8SNHaKtsBvMIzjaN79pBHmQdvRc_mJRf-Z9y5Wzn0-m6LmM2c60WA0Hu-vquTPZmbc'; // Your actual token
+    setSuccess(false);
 
     e.preventDefault();
 
@@ -678,6 +678,18 @@ const BrokersList = () => {
         const result = await response.text();
         console.log(result);
         setSuccess(true);
+
+        setTimeout(() => {
+          setAccountType({
+            ...accountType,
+            account_type: '',
+            account_type_minimum_trading_size: '',
+            account_type_maximum_trading_size: '',
+          });
+
+          setSuccess(false);
+
+        }, 2000);
       } else {
         console.error('Error:', response.statusText);
       }
@@ -832,7 +844,7 @@ const BrokersList = () => {
                               onChange={handleChangeType}
                               invalid={!!errorsAccountType.account_type}
                             />
-                            <FormFeedback>{errorsAccountType.account_type}</FormFeedback>
+                            {errorsAccountType.account_type && <Alert color="danger">{errorsAccountType.account_type}</Alert>}
                           </FormGroup>
 
                           <FormGroup>
@@ -845,7 +857,8 @@ const BrokersList = () => {
                               onChange={handleChangeType}
                               invalid={!!errorsAccountType.account_type_minimum_trading_size}
                             />
-                            <FormFeedback>{errorsAccountType.account_type_minimum_trading_size}</FormFeedback>
+                            {errorsAccountType.account_type_minimum_trading_size && <Alert color="danger">{errorsAccountType.account_type_minimum_trading_size}</Alert>}
+
                           </FormGroup>
 
                           <FormGroup>
@@ -858,12 +871,14 @@ const BrokersList = () => {
                               onChange={handleChangeType}
                               invalid={!!errorsAccountType.account_type_maximum_trading_size}
                             />
-                            <FormFeedback>{errorsAccountType.account_type_maximum_trading_size}</FormFeedback>
+                            {errorsAccountType.account_type_maximum_trading_size && <Alert color="danger">{errorsAccountType.account_type_maximum_trading_size}</Alert>}
                           </FormGroup>
+                          {success && <Alert style={{ marginTop: 15, marginBottom: 40 }} color="success">Add successfuly</Alert>}
 
                           <Button style={{ backgroundColor: '#26c6da', color: '#ffffff' }} type="submit">Save</Button>
                           <Button style={{ backgroundColor: '#e57373', color: '#ffffff', marginLeft: 10 }} onClick={() => setModeIs(0)}>Cancel</Button>
                         </Form>
+
                       </Container>
                     </div>
                   }

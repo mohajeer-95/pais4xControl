@@ -27,7 +27,8 @@ const SliderList = () => {
     try {
       const response = await fetch("https://lab.app2serve.com/public/api/all-brokers-link-request", requestOptions);
       const result = await response.json();
-      setSliders(result.brokers_link);
+      const data = result.brokers_link.reverse()
+      setSliders(data);
     } catch (error) {
       console.error('Error fetching sliders:', error);
     } finally {
@@ -121,7 +122,10 @@ const SliderList = () => {
 
 
   if (loading) {
-    return <Spinner />;
+    return      <div style={{marginTop: 300}} className="text-center">
+    <Spinner  type="grow" style={{width: '5rem', height: '5rem', backgroundColor: '#26c6da'}} />
+    <p style={{marginTop: 20, fontWeight: 'bold'}}>Loading...</p>
+  </div> ;
   }
 
   return (

@@ -16,8 +16,18 @@ const Users = () => {
 
     useEffect(() => {
         getUsers()
+        getBrokers();
     }, [])
 
+
+    const getBrokers = async () => {
+        const response = await callApiWithToken('https://lab.app2serve.com/public/api/brokers', {}, 'GET');
+        const brokersWid = response.brokers.map((obj, index) => ({ ...obj, id: index + 1 }));
+        setBrokers(brokersWid);
+    };
+
+
+    const [brokers, setBrokers] = React.useState(null);
     const [rows, setRows] = React.useState(null);
     const [rowModesModel, setRowModesModel] = React.useState({});
     const [brokersList, setBrokersList] = useState([])
@@ -318,7 +328,7 @@ const Users = () => {
                                                 required
                                             />
                                         </FormGroup>
-                                        <FormGroup>
+                                        {!brokers ? <FormGroup>
                                             <Label for="broker_id">Broker ID</Label>
                                             <Input
                                                 type="text"
@@ -329,6 +339,26 @@ const Users = () => {
                                                 required
                                             />
                                         </FormGroup>
+                                            :
+                                            <FormGroup>
+
+                                                <Label for="broker_id">Broker</Label>
+                                                <Input
+                                                    type="select"
+                                                    id="broker_id"
+                                                    name="broker_id"
+                                                    value={cashbackData.broker_id}
+                                                    onChange={handleCashbackChange}
+                                                >
+                                                    <option value="">Select Broker</option>
+                                                    {brokers.map(option => (
+                                                        <option key={option.broker_id} value={option.broker_id}>
+                                                            {option.name}
+                                                        </option>
+                                                    ))}
+                                                </Input>
+                                            </FormGroup>}
+
                                         <Button type="submit">Submit Cashback</Button>
                                     </Form>
                                 </div>

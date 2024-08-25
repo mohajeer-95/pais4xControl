@@ -68,11 +68,13 @@ import Login from "../views/login"
 import BrokersList from "../views/ui/BrokersList"
 import Users from "../views/ui/Users"
 import Carousel from "../views/ui/Carousel"
-import Slider from "../views/ui/Slider"
+import Banner from "../views/ui/Slider"
 import Courses from "../views/ui/Courses"
 import Tables from "../views/ui/Tables"
 import Forms from "../views/ui/Forms"
 import RequestLinks from "../views/ui/RequestLinks"
+import CashBackList from "../views/ui/cashBackList"
+import PaymentList from "../views/ui/paymentList"
 
 /*****Routes******/
 
@@ -87,8 +89,10 @@ const ThemeRoutes = [
       { path: "/brokersList", element: <ProtectedRoute element={<BrokersList />} /> },
       { path: "/users", element: <ProtectedRoute element={<Users />} /> },
       { path: "/carousel", element: <ProtectedRoute element={<Carousel />} /> },
-      { path: "/slider", element: <ProtectedRoute element={<Slider />} /> },
+      { path: "/banner", element: <ProtectedRoute element={<Banner />} /> },
       { path: "/courses", element: <ProtectedRoute element={<Courses />} /> },
+      { path: "/cashBackList", element: <ProtectedRoute element={<CashBackList />} /> },
+      { path: "/paymentList", element: <ProtectedRoute element={<PaymentList />} /> },
       { path: "/table", element: <ProtectedRoute element={<Tables />} /> },
       { path: "/forms", element: <ProtectedRoute element={<Forms />} /> },
       { path: "/requestLinks", element: <RequestLinks element={<RequestLinks />} /> },
