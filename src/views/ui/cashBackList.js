@@ -16,7 +16,7 @@ export default function BasicEditingGrid() {
             redirect: "follow"
         };
 
-        fetch("https://lab.app2serve.com/public/api/cashback", requestOptions)
+        fetch("https://lab.app2serve.com/public/api/cashback-list", requestOptions)
             .then((response) => response.json()) // Parse the JSON response
             .then((result) => {
                 setCashBackList(result.cashback_list); // Update the state with fetched data

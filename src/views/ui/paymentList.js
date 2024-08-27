@@ -18,7 +18,7 @@ export default function BasicEditingGrid() {
             redirect: "follow"
         };
 
-        fetch("https://lab.app2serve.com/public/api/payments", requestOptions)
+        fetch("https://lab.app2serve.com/public/api/payments-list", requestOptions)
             .then((response) => response.json()) // Parse the JSON response
             .then((result) => {
                 const updatedArray = result.payment_list.map(item => {
