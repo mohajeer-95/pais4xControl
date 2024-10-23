@@ -15,8 +15,13 @@ const navigation = [
     icon: "bi bi-patch-check",
   },
   {
-    title: "BrokersList",
+    title: "Brokers List",
     href: "/brokersList",
+    icon: "bi bi-hdd-stack",
+  },
+  {
+    title: "Edit Broker",
+    href: "/editBroker",
     icon: "bi bi-hdd-stack",
   },
   {

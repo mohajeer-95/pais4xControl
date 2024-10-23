@@ -2,7 +2,7 @@
 
 
 import React, { useState, useEffect } from "react";
-import { Col, Row, Form, FormGroup, Label, Input, Alert, Container, Card, CardBody, CardTitle, FormFeedback } from 'reactstrap';
+import { Col, Row, Form, FormGroup, Label, Input, Alert, Container, Card, CardBody, CardTitle, Spinner } from 'reactstrap';
 // import { Card, CardBody, CardTitle, Container, FormFeedback, Spinner } from "reactstrap";
 
 import Box from '@mui/material/Box';
@@ -35,132 +35,71 @@ const initialEditForm = {
 
 
 
-
-const initialFormDataWithData = {
-  name: 'TEST ADD BROKER',
-  email: 'testadd@pais4x.net',
-  description: 'Welcome to ESCO...',
-  cashback: '93',
-  account_currency: 'USD / EUR',
-  currency: 'dollar',
-  title: 'sndkvjcsndvjk',
-  entity_name: 'jkvb hsbvjk',
-  broker_type: 'keajnrkvjb ejk',
-  branch_offices: 'kajbrhjvkebhjvebr',
-  headquarters: 'renkjve',
-  bonus: 'test test ',
-  islamic_accounts: 'test test ',
-  trailing_stop: 'test test ',
-  hedging: 'test test ',
-  scalping: 'test test ',
-  ea: 'test test ',
-  segregated_accounts: 'test test ',
-  number_of_instruments: '300',
-  categories_of_instruments: 'test test ',
-  channels: 'https://chat.conv.rs/...',
-  hours: 'From 8:00 to 17:00 CET Time',
-  languages: 'English 50+ Other',
-  pc_platforms: 'Browser Trader, FXC Trader App',
-  mobile_platforms: 'FXC Trader Android / iOS',
-  demo_period: 'No Expiration on Demo Account',
-  MAM_PAMM: 'Yes',
-  leverage_levels: '1:1000 (possible to lower in client potal)',
-  margin_call_evel: '50',
-  stop_out_level: '30',
-  closing_method_stop_out: 'Margin : one by one Floating: all at once',
-  avg_spread_on_EURUSD_val_1: '20',
-  avg_spread_on_EURUSD_val_2: '30',
-  avg_spread_on_EURUSD_val_3: '40',
-  commissions_on_FX_val_1: '6',
-  commissions_on_FX_val_2: '2',
-  commissions_on_FX_val_3: '3',
-  FX_margin_bonus: '0,01 LOT',
-  FX_scalping_account: '0,01 LOT',
-  FX_floating_bonus: '0,01 LOT',
-  metals_margin_bonus: 'Not Max',
-  metals_floating_bonus: 'Not Max',
-  metals_scalping_account: 'Not Max',
-  energies_margin_bonus: 'Not Max',
-  energies_floating_bonus: 'Not Max',
-  energies_scalping_account: 'Not Max',
-  indicies_margin_bonus: 'Not Max',
-  indicies_scalping_account: 'Not Max',
-  indicies_floating_bonus: 'Not Max',
-  stocks_margin_bonus: 'Not Max',
-  stocks_floating_bonus: 'Not Max',
-  stocks_scalping_account: 'Not Max',
-  minimum_deposit_val1: '10',
-  minimum_deposit_val2: '10',
-  minimum_deposit_val3: '1000',
-  payment_methods: 'All Local Deposit Types, Crypto, Wire Transfer, Match2Pay, AstroPay etc',
-  youtube_link: 'ojugilkfdsisjglkfdjglk',
-  whatsapp_link: 'LINK FOR whatsapp_l',
-  twitter_link: 'LINK FOR twitter_link',
-  instagram_link: 'LINK FOR instagram_link',
-  facebook_link: 'LINK FOR facebook_link',
-};
+ 
 
 const initialFormData = {
-  name: '',
-  email: '',
-  description: '',
-  cashback: '',
-  account_currency: '',
-  currency: '',
-  title: '',
-  entity_name: '',
-  broker_type: '',
-  branch_offices: '',
-  headquarters: '',
-  bonus: '',
-  islamic_accounts: '',
-  trailing_stop: '',
-  hedging: '',
-  scalping: '',
-  ea: '',
-  segregated_accounts: '',
-  number_of_instruments: '',
-  categories_of_instruments: '',
-  channels: '',
-  hours: '',
-  languages: '',
-  pc_platforms: '',
-  mobile_platforms: '',
-  demo_period: '',
-  MAM_PAMM: '',
-  leverage_levels: '',
-  margin_call_evel: '',
-  stop_out_level: '',
-  closing_method_stop_out: '',
-  avg_spread_on_EURUSD_val_1: '',
-  avg_spread_on_EURUSD_val_2: '',
-  avg_spread_on_EURUSD_val_3: '',
-  commissions_on_FX_val_1: '',
-  commissions_on_FX_val_2: '',
-  commissions_on_FX_val_3: '',
-  FX_margin_bonus: '',
-  FX_scalping_account: '',
-  FX_floating_bonus: '',
-  metals_margin_bonus: '',
-  metals_floating_bonus: '',
-  metals_scalping_account: '',
-  energies_margin_bonus: '',
-  energies_floating_bonus: '',
-  energies_scalping_account: '',
-  indicies_margin_bonus: '',
-  indicies_scalping_account: '',
-  indicies_floating_bonus: '',
-  stocks_margin_bonus: '',
-  stocks_floating_bonus: '',
-  stocks_scalping_account: '',
-  minimum_deposit_val1: '',
-  minimum_deposit_val2: '',
-  minimum_deposit_val3: '',
-  payment_methods: '',
-  youtube_link: '',
-  facebook: '',
-  instagram: '',
-  linkden: '',
+  name: "",
+  email: "",
+  description: "",
+  cashback: "",
+  account_currency: "",
+  currency: "",
+  title: "",
+  entity_name: "",
+  broker_type: "",
+  branch_offices: "",
+  headquarters: "",
+  bonus: "",
+  islamic_accounts: "",
+  trailing_stop: "",
+  hedging: "",
+  scalping: "",
+  ea: "",
+  segregated_accounts: "",
+  number_of_instruments: "",
+  categories_of_instruments: "",
+  channels: "",
+  hours: "",
+  languages: "",
+  pc_platforms: "",
+  mobile_platforms: "",
+  demo_period: "",
+  MAM_PAMM: "",
+  leverage_levels: "",
+  margin_call_evel: "",
+  stop_out_level: "",
+  closing_method_stop_out: "",
+  avg_spread_on_EURUSD_val_1: "",
+  avg_spread_on_EURUSD_val_2: "",
+  avg_spread_on_EURUSD_val_3: "",
+  commissions_on_FX_val_1: "",
+  commissions_on_FX_val_2: "",
+  commissions_on_FX_val_3: "",
+  FX_margin_bonus: "",
+  FX_scalping_account: "",
+  FX_floating_bonus: "",
+  metals_margin_bonus: "",
+  metals_floating_bonus: "",
+  metals_scalping_account: "",
+  energies_margin_bonus: "",
+  energies_floating_bonus: "",
+  energies_scalping_account: "",
+  indicies_margin_bonus: "",
+  indicies_scalping_account: "",
+  indicies_floating_bonus: "",
+  stocks_margin_bonus: "",
+  stocks_floating_bonus: "",
+  stocks_scalping_account: "",
+  minimum_deposit_val1: "",
+  minimum_deposit_val2: "",
+  minimum_deposit_val3: "",
+  payment_methods: "",
+  youtube_link: "",
+  whatsapp_link: "",
+  twitter_link: "",
+  instagram_link: "",
+  facebook_link: "",
+  linkedin_link: "",
 };
 
 const currencyOptions = [
@@ -175,19 +114,20 @@ const BrokersList = () => {
   const [rowModesModel, setRowModesModel] = useState({});
   const [formErrors, setFormErrors] = useState({});
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [formData, setFormData] = useState(initialFormDataWithData);
+  const [formData, setFormData] = useState(initialFormData);
   const [editForm, setEditForm] = useState({});
   const [file, setFile] = useState(null);
+  const [filePoster, setFilePoster] = useState(null);
   const [logoFile, setLogoFile] = useState(null);
   const [modeIs, setModeIs] = useState(0);
   const [imagePreview, setImagePreview] = useState("https://i0.wp.com/maidcleantx.com/wp-content/uploads/2017/10/logo.png?ssl=1"); // Path to your default image
   const [logoPreview, setLogoPreview] = useState("https://i0.wp.com/maidcleantx.com/wp-content/uploads/2017/10/logo.png?ssl=1"); // Path to your default image
+  const [posterImage, setPosterImage] = useState("https://i0.wp.com/maidcleantx.com/wp-content/uploads/2017/10/logo.png?ssl=1"); // Path to your default image
   const [errorsAccountType, setErrorsAccountType] = useState({});
   const [loadingAccountType, setLoadingAccountType] = useState(false);
   const [success, setSuccess] = useState(false);
-
-
-
+  const [loadingAddEdit, setLoadingAddEdit] = useState(false);
+  
 
   const [addError, setAddError] = useState('')
   const [responseCash, setresponseCash] = useState([])
@@ -195,7 +135,8 @@ const BrokersList = () => {
   const [textSearch, setTextSearch] = useState('')
 
   //form
-  const imageUrl = 'https://lab.app2serve.com/storage/app/public/'
+  const imageUrl = 'https://paid4x.com/broker/public/'
+
 
 
   const [accountType, setAccountType] = useState(initialFormAccountType);
@@ -206,8 +147,8 @@ const BrokersList = () => {
   }, []);
 
   const getBrokers = async () => {
-    const response = await callApiWithToken('https://lab.app2serve.com/public/api/brokers', {}, 'GET');
-    const brokersWid = response.brokers.map((obj, index) => ({ ...obj, id: index + 1 }));
+    const response = await callApiWithToken('https://paid4x.com/broker/public/api/brokers', {}, 'GET');
+    const brokersWid = response?.brokers?.map((obj, index) => ({ ...obj, id: index + 1 }));
     setRows(brokersWid);
   };
 
@@ -259,6 +200,8 @@ const BrokersList = () => {
 
   const addBroker = () => {
     setModeIs(1)
+
+    setPosterImage('https://i0.wp.com/maidcleantx.com/wp-content/uploads/2017/10/logo.png?ssl=1')
     setImagePreview('https://i0.wp.com/maidcleantx.com/wp-content/uploads/2017/10/logo.png?ssl=1')
     setLogoPreview('https://i0.wp.com/maidcleantx.com/wp-content/uploads/2017/10/logo.png?ssl=1')
     // setFormData(initialFormData);
@@ -288,13 +231,13 @@ const BrokersList = () => {
     setFormData({ ...item });
     var logo = imageUrl + item.logo
     var image = imageUrl + item.image
-    if (logo != 'https://lab.app2serve.com/storage/app/public/') {
+    if (logo != 'https://paid4x.com/broker/public/') {
       setImagePreview(logo)
     } else {
       setImagePreview('https://i0.wp.com/maidcleantx.com/wp-content/uploads/2017/10/logo.png?ssl=1')
     }
 
-    if (image != 'https://lab.app2serve.com/storage/app/public/') {
+    if (image != 'https://paid4x.com/broker/public/') {
       setLogoPreview(image)
     } else {
       setLogoPreview('https://i0.wp.com/maidcleantx.com/wp-content/uploads/2017/10/logo.png?ssl=1')
@@ -336,8 +279,10 @@ const BrokersList = () => {
 
     if (isConfirmed) {
       deleteItem(item.broker_id)
+      deleteFromCarousel(item.broker_id)
+
       // Call your delete function here
-      console.log("Item deleted");
+      // console.log("Item deleted");
     } else {
       console.log("Item not deleted");
     }
@@ -346,7 +291,8 @@ const BrokersList = () => {
   const deleteItem = (id) => {
     console.log('SSSSSSSSSSSSS', id);
 
-    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjg2MDllNzQ0OTgxZjMwNzIyZTllNmRlMDQyMjY2MDJmNDM0NTk3ODBlNzUzM2FiNDc3MGFhMjhiZDFjZjRhMjU5NGNhYjI3MGJhM2UxNzUiLCJpYXQiOjE3MTc2MjA2NDQsIm5iZiI6MTcxNzYyMDY0NCwiZXhwIjoxNzQ5MTU2NjQ0LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.cRRWjwpsvG5cYb-5n_YpfrOHfoWzRTEoYndZffA08MrJxWnv4KZ1mezT6PaKxPdDNEnRQaeqPSdo4Wtf5xWrlgpZTnNQmd8-_xXjz_LJHIXdGtT5YosL6If__d1psx6nsW8ckyXx2mKWF2hiM6a1c65keOgtmiEwCsADxBYZv-VAE1eZz8eQHaYmc_dBFZnfevZqaDOcYjSdijRBGXYGCb65-wolO08is5cf6jq-r6m0pWKQ1Gwq8h5BRV4HBqxLVJK-2Mbk2hHF0EsxrUSIE9wTKxqBcH0SL4wOA8GWeiQUSlAncTkwvGQwFBdGVMou67XDz5UeiN0ek6JayemFZcpq-fkHP7l1fNpT_6SgQSRaIxca2rx9Q_nQYrjIczzuvPchbs9MbOdKdEpuolOWAbI4VBGS0FvMiXF596LCLuyAnnAC2YppkMF6AepxMBWtvCpYgL_Kr6KK4e-39_7tzhe1nMZsIRg-2jEYkHv8TB1vr4VaN4IikA6gEVlfml51VW6aiej2YkY4WtdJSeVAOhPgcPYX396v7awfW7liQz4TOIS0sxSaFTTlCrKvqxBz676uzmqxq0oUqTBm_4vlAirm1iluAXP9NwxYKHxIF8SNHaKtsBvMIzjaN79pBHmQdvRc_mJRf-Z9y5Wzn0-m6LmM2c60WA0Hu-vquTPZmbc'; // Your actual token
+    // const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjg2MDllNzQ0OTgxZjMwNzIyZTllNmRlMDQyMjY2MDJmNDM0NTk3ODBlNzUzM2FiNDc3MGFhMjhiZDFjZjRhMjU5NGNhYjI3MGJhM2UxNzUiLCJpYXQiOjE3MTc2MjA2NDQsIm5iZiI6MTcxNzYyMDY0NCwiZXhwIjoxNzQ5MTU2NjQ0LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.cRRWjwpsvG5cYb-5n_YpfrOHfoWzRTEoYndZffA08MrJxWnv4KZ1mezT6PaKxPdDNEnRQaeqPSdo4Wtf5xWrlgpZTnNQmd8-_xXjz_LJHIXdGtT5YosL6If__d1psx6nsW8ckyXx2mKWF2hiM6a1c65keOgtmiEwCsADxBYZv-VAE1eZz8eQHaYmc_dBFZnfevZqaDOcYjSdijRBGXYGCb65-wolO08is5cf6jq-r6m0pWKQ1Gwq8h5BRV4HBqxLVJK-2Mbk2hHF0EsxrUSIE9wTKxqBcH0SL4wOA8GWeiQUSlAncTkwvGQwFBdGVMou67XDz5UeiN0ek6JayemFZcpq-fkHP7l1fNpT_6SgQSRaIxca2rx9Q_nQYrjIczzuvPchbs9MbOdKdEpuolOWAbI4VBGS0FvMiXF596LCLuyAnnAC2YppkMF6AepxMBWtvCpYgL_Kr6KK4e-39_7tzhe1nMZsIRg-2jEYkHv8TB1vr4VaN4IikA6gEVlfml51VW6aiej2YkY4WtdJSeVAOhPgcPYX396v7awfW7liQz4TOIS0sxSaFTTlCrKvqxBz676uzmqxq0oUqTBm_4vlAirm1iluAXP9NwxYKHxIF8SNHaKtsBvMIzjaN79pBHmQdvRc_mJRf-Z9y5Wzn0-m6LmM2c60WA0Hu-vquTPZmbc'; // Your actual token
+    const token = localStorage.getItem('token');
 
     const myHeaders = new Headers();
     myHeaders.append('Authorization', `Bearer ${token}`);
@@ -358,13 +304,39 @@ const BrokersList = () => {
       redirect: "follow",
     };
 
-    fetch(`https://lab.app2serve.com/public/api/broker/${id}`, requestOptions)
+    fetch(`https://paid4x.com/broker/public/api/broker/${id}`, requestOptions)
       .then((response) => response.text())
       .then((result) => getBrokers())
       .catch((error) => console.error(error));
   };
 
+const deleteFromCarousel =async(id)=>{
 
+  const token = localStorage.getItem('token');
+
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", `Bearer ${token}`); // Replace with your actual token
+
+  const requestOptions = {
+    method: "DELETE",
+    headers: myHeaders,
+    body: "", // Body is empty for DELETE requests, so this can be omitted or set to null if preferred
+    redirect: "follow"
+  };
+
+  try {
+    const response = await fetch(`https://paid4x.com/broker/public/api/broker-carousel/${id}`, requestOptions);
+    // if (!response.ok) {
+    //   throw new Error('Network response was not ok');
+    // }
+    const result = await response.text();
+    console.log('result', result);
+    getBrokers()
+  } catch (error) {
+    throw error;
+  }
+
+}
 
 
   const handleRowModesModelChange = (newRowModesModel) => {
@@ -483,10 +455,13 @@ const BrokersList = () => {
 
 
   const addItem = async (e) => {
+    setLoadingAddEdit(1)
+
     console.log('IN ADD BROKER ITEM');
     setAddError('')
 
-    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjg2MDllNzQ0OTgxZjMwNzIyZTllNmRlMDQyMjY2MDJmNDM0NTk3ODBlNzUzM2FiNDc3MGFhMjhiZDFjZjRhMjU5NGNhYjI3MGJhM2UxNzUiLCJpYXQiOjE3MTc2MjA2NDQsIm5iZiI6MTcxNzYyMDY0NCwiZXhwIjoxNzQ5MTU2NjQ0LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.cRRWjwpsvG5cYb-5n_YpfrOHfoWzRTEoYndZffA08MrJxWnv4KZ1mezT6PaKxPdDNEnRQaeqPSdo4Wtf5xWrlgpZTnNQmd8-_xXjz_LJHIXdGtT5YosL6If__d1psx6nsW8ckyXx2mKWF2hiM6a1c65keOgtmiEwCsADxBYZv-VAE1eZz8eQHaYmc_dBFZnfevZqaDOcYjSdijRBGXYGCb65-wolO08is5cf6jq-r6m0pWKQ1Gwq8h5BRV4HBqxLVJK-2Mbk2hHF0EsxrUSIE9wTKxqBcH0SL4wOA8GWeiQUSlAncTkwvGQwFBdGVMou67XDz5UeiN0ek6JayemFZcpq-fkHP7l1fNpT_6SgQSRaIxca2rx9Q_nQYrjIczzuvPchbs9MbOdKdEpuolOWAbI4VBGS0FvMiXF596LCLuyAnnAC2YppkMF6AepxMBWtvCpYgL_Kr6KK4e-39_7tzhe1nMZsIRg-2jEYkHv8TB1vr4VaN4IikA6gEVlfml51VW6aiej2YkY4WtdJSeVAOhPgcPYX396v7awfW7liQz4TOIS0sxSaFTTlCrKvqxBz676uzmqxq0oUqTBm_4vlAirm1iluAXP9NwxYKHxIF8SNHaKtsBvMIzjaN79pBHmQdvRc_mJRf-Z9y5Wzn0-m6LmM2c60WA0Hu-vquTPZmbc'; // Your actual token
+    //  const token ="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiZDhkMDJmNDFkNTIxNmFmMGFjYjI3NWVhMjI1ZTdhZjFlNTcwYjUwYWJhNWRhNzcwOWQ2Mzg3ZGJiOGM0Y2IyOWFlZjA3NjkyZGY2MGRkZjYiLCJpYXQiOjE3Mjg2NTAyOTQuMzUxOTY1OTA0MjM1ODM5ODQzNzUsIm5iZiI6MTcyODY1MDI5NC4zNTE5NjcwOTYzMjg3MzUzNTE1NjI1LCJleHAiOjE3NjAxODYyOTQuMzUwMTk3MDc2Nzk3NDg1MzUxNTYyNSwic3ViIjoiMiIsInNjb3BlcyI6W119.gCwmDBnzgu3PYfoeptYI1eeWMHxBlI4WOGIZ_EU4o_SXDEQ6EMymCIEcy554wcVuzdENL0LULTfUoW3GT98vtdP2cN1UYdAfEjNFUOj6bP2myqQxBl_ynfclV8n6ic-WVGcX2Puz_egXkcRDAPCwoH0PGZa3ybIf6XmldGQ8vclSGYnDNu58fGNQ5v3YH4O6kYABS1fqM6eWkx1g3snI7tlTYImFhg8JABa-90pzTJX0wX9Yy7-mPGfTw5-7iQVI-twuIIBnwPNCGCxjWsIKbzQ6-ig8A6ebQ225dR9EZ-XleXovdfwXfOQ5zj5dXLL15UOaWGxu_Ka1xq5txz4WykyYvid_GbslcV31EMPoXNdqMfLlGUeA2y105mlrAYbexdEZcMJvqktqHzYWfZz9diBY1TxrSwTDKBJC4JZeIKj2X_UhP4vt-KwiVrn7ZJAPMcT_NboSpXBigfTuwtfBRavTmNgWv2ntLIRMg9TTkwFV4bY9u2nml1VCJWJexWl4UKxob7Uvs9Q8YrAKSQiKPZI7f3WiIgJK6-hemqnIZafN3AyQORGNRG9AU2j05rH_6APXsOpxNV6lIQdzjEjoTuf-mU2dNIo64qXLClawrLLukm9kv5O-efqmz4A7vChg3L55FMRPwdl2GL3RdRQlYrJyzo2eq7fZHPrzCzJ69z8"
+     const token = localStorage.getItem('token');
 
     e.preventDefault();
 
@@ -515,6 +490,10 @@ const BrokersList = () => {
       formdata.append('image', logoFile, logoFile.name);
     }
 
+    if (filePoster) {
+      formdata.append('video_image', filePoster, filePoster.name);
+    }
+
     const myHeaders = new Headers();
     myHeaders.append('Authorization', `Bearer ${token}`);
 
@@ -526,20 +505,32 @@ const BrokersList = () => {
     };
 
     try {
-      const response = await fetch("https://lab.app2serve.com/public/api/brokers", requestOptions);
+      const response = await fetch("https://paid4x.com/broker/public/api/brokers", requestOptions);
       const result = await response.json();
       console.log('response', response);
       console.log(result);
 
-      if (result.status == 1) {
+      if (result?.status == 1) {
+        setLoadingAddEdit(2)
         getBrokers();
-        setViewMode(true)
+
+        setTimeout(() => {
+          setViewMode(true)
+          setLoadingAddEdit(0)
+
+        }, 3000);
+
       } else {
+
         const firstKey = Object.keys(result)[0];
         const firstMessage = result[firstKey][0];
         setAddError(firstMessage)
+        setLoadingAddEdit(0)
+
       }
     } catch (error) {
+      setLoadingAddEdit(0)
+
       console.error(error);
       setAddError(error)
     }
@@ -548,9 +539,16 @@ const BrokersList = () => {
 
 
   const editItem = async (e) => {
-    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjg2MDllNzQ0OTgxZjMwNzIyZTllNmRlMDQyMjY2MDJmNDM0NTk3ODBlNzUzM2FiNDc3MGFhMjhiZDFjZjRhMjU5NGNhYjI3MGJhM2UxNzUiLCJpYXQiOjE3MTc2MjA2NDQsIm5iZiI6MTcxNzYyMDY0NCwiZXhwIjoxNzQ5MTU2NjQ0LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.cRRWjwpsvG5cYb-5n_YpfrOHfoWzRTEoYndZffA08MrJxWnv4KZ1mezT6PaKxPdDNEnRQaeqPSdo4Wtf5xWrlgpZTnNQmd8-_xXjz_LJHIXdGtT5YosL6If__d1psx6nsW8ckyXx2mKWF2hiM6a1c65keOgtmiEwCsADxBYZv-VAE1eZz8eQHaYmc_dBFZnfevZqaDOcYjSdijRBGXYGCb65-wolO08is5cf6jq-r6m0pWKQ1Gwq8h5BRV4HBqxLVJK-2Mbk2hHF0EsxrUSIE9wTKxqBcH0SL4wOA8GWeiQUSlAncTkwvGQwFBdGVMou67XDz5UeiN0ek6JayemFZcpq-fkHP7l1fNpT_6SgQSRaIxca2rx9Q_nQYrjIczzuvPchbs9MbOdKdEpuolOWAbI4VBGS0FvMiXF596LCLuyAnnAC2YppkMF6AepxMBWtvCpYgL_Kr6KK4e-39_7tzhe1nMZsIRg-2jEYkHv8TB1vr4VaN4IikA6gEVlfml51VW6aiej2YkY4WtdJSeVAOhPgcPYX396v7awfW7liQz4TOIS0sxSaFTTlCrKvqxBz676uzmqxq0oUqTBm_4vlAirm1iluAXP9NwxYKHxIF8SNHaKtsBvMIzjaN79pBHmQdvRc_mJRf-Z9y5Wzn0-m6LmM2c60WA0Hu-vquTPZmbc'; // Your actual token
+    console.log('editForm is F====================== >', editForm);
+
+    setLoadingAddEdit(1);
     e.preventDefault();
-    const id = formData.broker_id
+    // const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjg2MDllNzQ0OTgxZjMwNzIyZTllNmRlMDQyMjY2MDJmNDM0NTk3ODBlNzUzM2FiNDc3MGFhMjhiZDFjZjRhMjU5NGNhYjI3MGJhM2UxNzUiLCJpYXQiOjE3MTc2MjA2NDQsIm5iZiI6MTcxNzYyMDY0NCwiZXhwIjoxNzQ5MTU2NjQ0LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.cRRWjwpsvG5cYb-5n_YpfrOHfoWzRTEoYndZffA08MrJxWnv4KZ1mezT6PaKxPdDNEnRQaeqPSdo4Wtf5xWrlgpZTnNQmd8-_xXjz_LJHIXdGtT5YosL6If__d1psx6nsW8ckyXx2mKWF2hiM6a1c65keOgtmiEwCsADxBYZv-VAE1eZz8eQHaYmc_dBFZnfevZqaDOcYjSdijRBGXYGCb65-wolO08is5cf6jq-r6m0pWKQ1Gwq8h5BRV4HBqxLVJK-2Mbk2hHF0EsxrUSIE9wTKxqBcH0SL4wOA8GWeiQUSlAncTkwvGQwFBdGVMou67XDz5UeiN0ek6JayemFZcpq-fkHP7l1fNpT_6SgQSRaIxca2rx9Q_nQYrjIczzuvPchbs9MbOdKdEpuolOWAbI4VBGS0FvMiXF596LCLuyAnnAC2YppkMF6AepxMBWtvCpYgL_Kr6KK4e-39_7tzhe1nMZsIRg-2jEYkHv8TB1vr4VaN4IikA6gEVlfml51VW6aiej2YkY4WtdJSeVAOhPgcPYX396v7awfW7liQz4TOIS0sxSaFTTlCrKvqxBz676uzmqxq0oUqTBm_4vlAirm1iluAXP9NwxYKHxIF8SNHaKtsBvMIzjaN79pBHmQdvRc_mJRf-Z9y5Wzn0-m6LmM2c60WA0Hu-vquTPZmbc'; // Your actual token
+    const token = localStorage.getItem('token');
+
+    const id = formData.broker_id;
+    console.log('FORM ID IS ', id);
+    console.log('FORM DATA IS ', formData);
 
     let errors = {};
     Object.keys(formData).forEach(key => {
@@ -561,13 +559,8 @@ const BrokersList = () => {
 
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
-      return
+      return;
     }
-
-    const formdata = new FormData();
-    Object.keys(editForm).forEach(key => {
-      formdata.append(key, editForm[key]);
-    });
 
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -583,7 +576,7 @@ const BrokersList = () => {
     };
 
     try {
-      const response = await fetch(`https://lab.app2serve.com/public/api/broker/${id}`, requestOptions);
+      const response = await fetch(`https://paid4x.com/broker/public/api/broker/${id}`, requestOptions);
       const result = await response.json();
       console.log(result);
       if (result.status) {
@@ -615,6 +608,13 @@ const BrokersList = () => {
     }
   };
 
+
+  const handlePosterChange = (e) => {
+    setFilePoster(e.target.files[0]);
+    if (e.target.files[0]) {
+      setPosterImage(URL.createObjectURL(e.target.files[0])); // Create a preview URL for the selected image
+    }
+  };
   //form Function
 
 
@@ -646,7 +646,9 @@ const BrokersList = () => {
 
 
   const handleSubmitAccountType = async (e) => {
-    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjg2MDllNzQ0OTgxZjMwNzIyZTllNmRlMDQyMjY2MDJmNDM0NTk3ODBlNzUzM2FiNDc3MGFhMjhiZDFjZjRhMjU5NGNhYjI3MGJhM2UxNzUiLCJpYXQiOjE3MTc2MjA2NDQsIm5iZiI6MTcxNzYyMDY0NCwiZXhwIjoxNzQ5MTU2NjQ0LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.cRRWjwpsvG5cYb-5n_YpfrOHfoWzRTEoYndZffA08MrJxWnv4KZ1mezT6PaKxPdDNEnRQaeqPSdo4Wtf5xWrlgpZTnNQmd8-_xXjz_LJHIXdGtT5YosL6If__d1psx6nsW8ckyXx2mKWF2hiM6a1c65keOgtmiEwCsADxBYZv-VAE1eZz8eQHaYmc_dBFZnfevZqaDOcYjSdijRBGXYGCb65-wolO08is5cf6jq-r6m0pWKQ1Gwq8h5BRV4HBqxLVJK-2Mbk2hHF0EsxrUSIE9wTKxqBcH0SL4wOA8GWeiQUSlAncTkwvGQwFBdGVMou67XDz5UeiN0ek6JayemFZcpq-fkHP7l1fNpT_6SgQSRaIxca2rx9Q_nQYrjIczzuvPchbs9MbOdKdEpuolOWAbI4VBGS0FvMiXF596LCLuyAnnAC2YppkMF6AepxMBWtvCpYgL_Kr6KK4e-39_7tzhe1nMZsIRg-2jEYkHv8TB1vr4VaN4IikA6gEVlfml51VW6aiej2YkY4WtdJSeVAOhPgcPYX396v7awfW7liQz4TOIS0sxSaFTTlCrKvqxBz676uzmqxq0oUqTBm_4vlAirm1iluAXP9NwxYKHxIF8SNHaKtsBvMIzjaN79pBHmQdvRc_mJRf-Z9y5Wzn0-m6LmM2c60WA0Hu-vquTPZmbc'; // Your actual token
+    // const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjg2MDllNzQ0OTgxZjMwNzIyZTllNmRlMDQyMjY2MDJmNDM0NTk3ODBlNzUzM2FiNDc3MGFhMjhiZDFjZjRhMjU5NGNhYjI3MGJhM2UxNzUiLCJpYXQiOjE3MTc2MjA2NDQsIm5iZiI6MTcxNzYyMDY0NCwiZXhwIjoxNzQ5MTU2NjQ0LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.cRRWjwpsvG5cYb-5n_YpfrOHfoWzRTEoYndZffA08MrJxWnv4KZ1mezT6PaKxPdDNEnRQaeqPSdo4Wtf5xWrlgpZTnNQmd8-_xXjz_LJHIXdGtT5YosL6If__d1psx6nsW8ckyXx2mKWF2hiM6a1c65keOgtmiEwCsADxBYZv-VAE1eZz8eQHaYmc_dBFZnfevZqaDOcYjSdijRBGXYGCb65-wolO08is5cf6jq-r6m0pWKQ1Gwq8h5BRV4HBqxLVJK-2Mbk2hHF0EsxrUSIE9wTKxqBcH0SL4wOA8GWeiQUSlAncTkwvGQwFBdGVMou67XDz5UeiN0ek6JayemFZcpq-fkHP7l1fNpT_6SgQSRaIxca2rx9Q_nQYrjIczzuvPchbs9MbOdKdEpuolOWAbI4VBGS0FvMiXF596LCLuyAnnAC2YppkMF6AepxMBWtvCpYgL_Kr6KK4e-39_7tzhe1nMZsIRg-2jEYkHv8TB1vr4VaN4IikA6gEVlfml51VW6aiej2YkY4WtdJSeVAOhPgcPYX396v7awfW7liQz4TOIS0sxSaFTTlCrKvqxBz676uzmqxq0oUqTBm_4vlAirm1iluAXP9NwxYKHxIF8SNHaKtsBvMIzjaN79pBHmQdvRc_mJRf-Z9y5Wzn0-m6LmM2c60WA0Hu-vquTPZmbc'; // Your actual token
+    const token = localStorage.getItem('token');
+
     setSuccess(false);
 
     e.preventDefault();
@@ -673,7 +675,7 @@ const BrokersList = () => {
     };
     console.log('requestOptions', requestOptions);
     try {
-      const response = await fetch('https://lab.app2serve.com/public/api/broker-account-type', requestOptions);
+      const response = await fetch('https://paid4x.com/broker/public/api/broker-account-type', requestOptions);
       if (response.ok) {
         const result = await response.text();
         console.log(result);
@@ -743,26 +745,12 @@ const BrokersList = () => {
                       <span style={{ marginInline: 10 }}>Back</span>
                     </div>
                     {modeIs === 1 ? <h1>Add Broker</h1> : <h1>Edit {formData.name} Broker</h1>}
-                    <Container>
+                    {!loading ? <Container>
                       <Form onSubmit={handleSubmit}>
 
-                        <Row style={{ marginTop: 50 }}>
-                          <Col md="5" className="text-center">
-                            <FormGroup>
-                              <div>
-                                <img
-                                  src={imagePreview}
-                                  alt="Image Preview"
-                                  id="imagePreview"
-                                  style={{ border: '2px solid #26c6da', width: 150, maxWidth: 200, height: 'auto', maxHeight: '130', objectFit: 'cover', borderRadius: 9 }}
-                                />
-                              </div>
-                            </FormGroup>
-                            <Label for="logo">Logo for carousel</Label>
-                          </Col>
+                        <Row style={{ marginTop: 50, marginBottom: 40 }}>
 
-
-                          <Col md="5" className="text-center">
+                          <Col md="4" className="text-center">
                             <FormGroup>
                               <div>
                                 <img
@@ -775,11 +763,39 @@ const BrokersList = () => {
                             </FormGroup>
                             <Label for="logoImg">Logo</Label>
                           </Col>
-
-
+                          <Col md="4" className="text-center">
+                            <FormGroup>
+                              <div>
+                                <img
+                                  src={imagePreview}
+                                  alt="Image Preview"
+                                  id="imagePreview"
+                                  style={{ border: '2px solid #26c6da', width: 150, maxWidth: 200, height: 'auto', maxHeight: '130', objectFit: 'cover', borderRadius: 9 }}
+                                />
+                              </div>
+                            </FormGroup>
+                            <Label for="logo">Logo for carousel</Label>
+                          </Col>
+                          <Col md="4" className="text-center">
+                            <FormGroup>
+                              <div>
+                                <img
+                                  src={posterImage}
+                                  alt="Image Preview"
+                                  id="posterImage"
+                                  style={{ border: '2px solid #26c6da', width: 150, maxWidth: 200, height: 'auto', maxHeight: '130', objectFit: 'cover', borderRadius: 9 }}
+                                />
+                              </div>
+                            </FormGroup>
+                            <Label for="logo">Poster for video</Label>
+                          </Col>
 
 
                         </Row>
+                        <FormGroup>
+                          <Label for="logoImg">Logo</Label>
+                          <Input type="file" id="logoImg" name="logoImg" onChange={handleLogoChange} />
+                        </FormGroup>
 
                         <FormGroup>
                           <Label for="logo">Logo for carousel</Label>
@@ -787,10 +803,12 @@ const BrokersList = () => {
                         </FormGroup>
 
                         <FormGroup>
-                          <Label for="logoImg">Logo</Label>
-                          <Input type="file" id="logoImg" name="logoImg" onChange={handleLogoChange} />
+                          <Label for="logoImg">Poster fro video</Label>
+                          <Input type="file" id="poster" name="poster" onChange={handlePosterChange} />
                         </FormGroup>
-                        {Object.keys(formData).map((fieldName, index) => (
+
+
+                        {Object.keys(formData)?.map((fieldName, index) => (
                           <FormGroup key={index}>
                             <Label for={fieldName}>{fieldName.replace(/_/g, ' ')}</Label>
                             {fieldName === 'currency' ? (
@@ -802,7 +820,7 @@ const BrokersList = () => {
                                 onChange={handleCurrencyChange}
                               >
                                 <option value="">Select Currency</option>
-                                {currencyOptions.map(option => (
+                                {currencyOptions?.map(option => (
                                   <option key={option.value} value={option.value}>
                                     {option.label}
                                   </option>
@@ -823,12 +841,23 @@ const BrokersList = () => {
                             {formErrors[fieldName] && <Alert color="danger">{formErrors[fieldName]}</Alert>}
                           </FormGroup>
                         ))}
-                        <Button style={{ backgroundColor: '#26c6da', color: '#ffffff' }} type="submit">Submit</Button>
+                        {modeIs != 2 && <Button style={{ backgroundColor: '#26c6da', color: '#ffffff' }} type="submit">Submit</Button>}
                         {addError && <div className="alert alert-danger mt-3" role="alert">{addError}</div>}
+                        {loadingAddEdit == 2 ? <Alert style={{ marginTop: 15, marginBottom: 40 }} color="success">{modeIs === 2 ? 'Edit successfuly' : 'Add successfuly'}</Alert> : loadingAddEdit == 1 ?
+                          <div style={{ marginTop: 50 }} className="text-center">
+                            <Spinner type="grow" color="primary" />
+                            <p>Loading...</p>
+                          </div> : null}
+
                       </Form>
-                    </Container>
+                    </Container> :
+                      <div style={{ marginTop: 90 }} className="text-center">
+                        <Spinner type="grow" style={{ width: '5rem', height: '5rem', backgroundColor: '#26c6da' }} />
+                        <p style={{ marginTop: 20, fontWeight: 'bold' }}>Loading...</p>
+                      </div>}
+
                   </div>
-                  {modeIs === 2 &&
+                  {modeIs === 2 && !loading &&
                     <div style={{ marginTop: 30 }}>
                       <div className="dev-row" style={{ marginBottom: 10 }}></div>
                       <h1>Add Account Type</h1>

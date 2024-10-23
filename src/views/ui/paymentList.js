@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { Spinner, Button, Modal, ModalHeader, ModalBody, ModalFooter, CardTitle } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, CardTitle, Spinner } from 'reactstrap';
 
 export default function BasicEditingGrid() {
     const [cashBackList, setCashBackList] = useState([]); // State to hold fetched data
@@ -9,8 +9,12 @@ export default function BasicEditingGrid() {
     const [selectedImage, setSelectedImage] = useState(null); // State to hold the selected image
 
     useEffect(() => {
+        const token = localStorage.getItem('token');
+
         const myHeaders = new Headers();
-        myHeaders.append("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiM2RkNmQ3YjYyNjllMGNlNzc4Nzc3ZDAyYzAyZWYyOTIwNmRiMTI3OTBjYWRkOGEzNzI2NmEzNTNkNzg3OTM5YTMxYzZmZDlkYzE4MmE3ZWQiLCJpYXQiOjE3MjQ0MTY2NzEsIm5iZiI6MTcyNDQxNjY3MSwiZXhwIjoxNzU1OTUyNjcxLCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.QCXDl52UIo-ENs8Uyv6XA4AMXtcb5Ee62XKZIIbyMA_ZVjQ9FApS-eoXJV8ikxsqbMOpaVAqX86ns0Dfwp69ABhBxGRWVvk4TxtMdL1Jb4OfTqdHmZfKipvBZ40PeKGSPRiMXudT9Z2iDpI0Z-CHg5ohm9eyZcPmO2Bk46fmersCIVBn8DhYD2N8bSYghOyyR6M2FdtZIF6HATIrLxYVnZcUpNuum09TxNPhF0bxOqpxMOpiNDhN7RxGEd80Wx8PqtPH7ZrCzgK3P5Usfc605sR4LBIzUXRpEeTP_qNL85E255_430PhE3QBvJUIgx4b_EDlygimylJUdGZXY1SMJs2foK2cJdJai4o3JWj9ZP204NOqxPSKIKlcIj0H1rvcE53YZ9Az7cj_bhalDG-gbVp-cjSKEhSKcPsyRLSJq-_BPgWixcDRQTIQhtMlc2B39AWxOdOp6ICivxNB6LGOEeeM4RYvfYCVRECSl8Lf3YhgTUvay3Jsx5-EMGVINs1ouHLWv6Lg2UwwBHRjeh3ZT7T25Onx_CdXUQriuplUnOCJ9Qe3v2ba2pCxtnoP4d7ly5Bnbs0B4h8oiilP00oSENfVpIVo2nacbDOeV0KYrSesdPIJQ-V4aVCWbpl9A-JB_SsNqllaqgH-JRAtSSDxUVtr9ImSqQvRNnjIILTBTec");
+        console.log('token',token);
+        
+        myHeaders.append("Authorization", `Bearer ${token}`);
 
         const requestOptions = {
             method: "GET",
@@ -18,10 +22,10 @@ export default function BasicEditingGrid() {
             redirect: "follow"
         };
 
-        fetch("https://lab.app2serve.com/public/api/payments-list", requestOptions)
+        fetch("https://paid4x.com/broker/public/api/payments-list", requestOptions)
             .then((response) => response.json()) // Parse the JSON response
             .then((result) => {
-                const updatedArray = result.payment_list.map(item => {
+                const updatedArray = result?.payment_list?.map(item => {
                     const { payment_id, ...rest } = item; // Destructure to get the color and the rest of the object
                     return {
                         ...rest,          // Spread the rest of the properties
@@ -39,7 +43,7 @@ export default function BasicEditingGrid() {
     }, []); // Empty dependency array ensures this runs once when the component mounts
 
     const handleShowMore = (row) => {
-        setSelectedImage('https://lab.app2serve.com/storage/app/public/' + row.payment_image); // Set the selected image
+        setSelectedImage('https://paid4x.com/broker/public/' + row.payment_image); // Set the selected image
         setModalOpen(true); // Open the modal
     };
 
@@ -100,10 +104,10 @@ export default function BasicEditingGrid() {
                 <CardTitle style={{ marginTop: 5, marginBottom: 20 }} tag="h3">Payment Listing</CardTitle>
             </div>
             {loading ? (
-      <div style={{marginTop: 300}} className="text-center">
-      <Spinner  type="grow" style={{width: '5rem', height: '5rem', backgroundColor: '#26c6da'}} />
-      <p style={{marginTop: 20, fontWeight: 'bold'}}>Loading...</p>
-    </div>            ) : (
+                  <div style={{ marginTop: 300 }} className="text-center">
+                  <Spinner type="grow" color="primary" />
+                  <p>Loading...</p>
+                </div>            ) : (
                 <DataGrid rows={cashBackList} columns={columns} />
             )}
 

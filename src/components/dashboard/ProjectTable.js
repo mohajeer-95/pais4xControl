@@ -125,7 +125,7 @@ const ProjectTables = () => {
   const getUsers = async () => {
     var brokersWid = []
     setLoading(true)
-    const response = await callApiWithToken('https://lab.app2serve.com/public/api/brokers', {}, 'GET');
+    const response = await callApiWithToken('https://paid4x.com/broker/public/api/brokers', {}, 'GET');
     brokersWid = await response.brokers
     await brokersWid.map((obj, index) => {
       obj.id = index + 1;
