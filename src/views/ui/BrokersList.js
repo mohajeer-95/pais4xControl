@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from "react";
 import { Col, Row, Form, FormGroup, Label, Input, Alert, Container, Card, CardBody, CardTitle, Spinner } from 'reactstrap';
 // import { Card, CardBody, CardTitle, Container, FormFeedback, Spinner } from "reactstrap";
+import { useNavigate } from "react-router-dom";
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -35,7 +36,7 @@ const initialEditForm = {
 
 
 
- 
+
 
 const initialFormData = {
   name: "",
@@ -109,6 +110,8 @@ const currencyOptions = [
 ];
 
 const BrokersList = () => {
+  const navigate = useNavigate();
+
   const [viewMode, setViewMode] = useState(true);
   const [rows, setRows] = useState([]);
   const [rowModesModel, setRowModesModel] = useState({});
@@ -127,7 +130,7 @@ const BrokersList = () => {
   const [loadingAccountType, setLoadingAccountType] = useState(false);
   const [success, setSuccess] = useState(false);
   const [loadingAddEdit, setLoadingAddEdit] = useState(false);
-  
+
 
   const [addError, setAddError] = useState('')
   const [responseCash, setresponseCash] = useState([])
@@ -219,29 +222,29 @@ const BrokersList = () => {
 
   const handleEditClick = (id) => () => {
     const item = getObjectById(id);
+    navigate(`/editBroker/${item.broker_id}`);
+    // setModeIs(2)
+    // setAccountType({
+    //   account_type: '',
+    //   account_type_minimum_trading_size: '',
+    //   account_type_maximum_trading_size: '',
+    //   broker_id: item.broker_id
+    // });
+    // setViewMode(false)
+    // setFormData({ ...item });
+    // var logo = imageUrl + item.logo
+    // var image = imageUrl + item.image
+    // if (logo != 'https://paid4x.com/broker/public/') {
+    //   setImagePreview(logo)
+    // } else {
+    //   setImagePreview('https://i0.wp.com/maidcleantx.com/wp-content/uploads/2017/10/logo.png?ssl=1')
+    // }
 
-    setModeIs(2)
-    setAccountType({
-      account_type: '',
-      account_type_minimum_trading_size: '',
-      account_type_maximum_trading_size: '',
-      broker_id: item.broker_id
-    });
-    setViewMode(false)
-    setFormData({ ...item });
-    var logo = imageUrl + item.logo
-    var image = imageUrl + item.image
-    if (logo != 'https://paid4x.com/broker/public/') {
-      setImagePreview(logo)
-    } else {
-      setImagePreview('https://i0.wp.com/maidcleantx.com/wp-content/uploads/2017/10/logo.png?ssl=1')
-    }
-
-    if (image != 'https://paid4x.com/broker/public/') {
-      setLogoPreview(image)
-    } else {
-      setLogoPreview('https://i0.wp.com/maidcleantx.com/wp-content/uploads/2017/10/logo.png?ssl=1')
-    }
+    // if (image != 'https://paid4x.com/broker/public/') {
+    //   setLogoPreview(image)
+    // } else {
+    //   setLogoPreview('https://i0.wp.com/maidcleantx.com/wp-content/uploads/2017/10/logo.png?ssl=1')
+    // }
   };
 
   const handleSaveClick = (id) => () => {
@@ -310,33 +313,33 @@ const BrokersList = () => {
       .catch((error) => console.error(error));
   };
 
-const deleteFromCarousel =async(id)=>{
+  const deleteFromCarousel = async (id) => {
 
-  const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
 
-  const myHeaders = new Headers();
-  myHeaders.append("Authorization", `Bearer ${token}`); // Replace with your actual token
+    const myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer ${token}`); // Replace with your actual token
 
-  const requestOptions = {
-    method: "DELETE",
-    headers: myHeaders,
-    body: "", // Body is empty for DELETE requests, so this can be omitted or set to null if preferred
-    redirect: "follow"
-  };
+    const requestOptions = {
+      method: "DELETE",
+      headers: myHeaders,
+      body: "", // Body is empty for DELETE requests, so this can be omitted or set to null if preferred
+      redirect: "follow"
+    };
 
-  try {
-    const response = await fetch(`https://paid4x.com/broker/public/api/broker-carousel/${id}`, requestOptions);
-    // if (!response.ok) {
-    //   throw new Error('Network response was not ok');
-    // }
-    const result = await response.text();
-    console.log('result', result);
-    getBrokers()
-  } catch (error) {
-    throw error;
+    try {
+      const response = await fetch(`https://paid4x.com/broker/public/api/broker-carousel/${id}`, requestOptions);
+      // if (!response.ok) {
+      //   throw new Error('Network response was not ok');
+      // }
+      const result = await response.text();
+      console.log('result', result);
+      getBrokers()
+    } catch (error) {
+      throw error;
+    }
+
   }
-
-}
 
 
   const handleRowModesModelChange = (newRowModesModel) => {
@@ -461,7 +464,7 @@ const deleteFromCarousel =async(id)=>{
     setAddError('')
 
     //  const token ="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiZDhkMDJmNDFkNTIxNmFmMGFjYjI3NWVhMjI1ZTdhZjFlNTcwYjUwYWJhNWRhNzcwOWQ2Mzg3ZGJiOGM0Y2IyOWFlZjA3NjkyZGY2MGRkZjYiLCJpYXQiOjE3Mjg2NTAyOTQuMzUxOTY1OTA0MjM1ODM5ODQzNzUsIm5iZiI6MTcyODY1MDI5NC4zNTE5NjcwOTYzMjg3MzUzNTE1NjI1LCJleHAiOjE3NjAxODYyOTQuMzUwMTk3MDc2Nzk3NDg1MzUxNTYyNSwic3ViIjoiMiIsInNjb3BlcyI6W119.gCwmDBnzgu3PYfoeptYI1eeWMHxBlI4WOGIZ_EU4o_SXDEQ6EMymCIEcy554wcVuzdENL0LULTfUoW3GT98vtdP2cN1UYdAfEjNFUOj6bP2myqQxBl_ynfclV8n6ic-WVGcX2Puz_egXkcRDAPCwoH0PGZa3ybIf6XmldGQ8vclSGYnDNu58fGNQ5v3YH4O6kYABS1fqM6eWkx1g3snI7tlTYImFhg8JABa-90pzTJX0wX9Yy7-mPGfTw5-7iQVI-twuIIBnwPNCGCxjWsIKbzQ6-ig8A6ebQ225dR9EZ-XleXovdfwXfOQ5zj5dXLL15UOaWGxu_Ka1xq5txz4WykyYvid_GbslcV31EMPoXNdqMfLlGUeA2y105mlrAYbexdEZcMJvqktqHzYWfZz9diBY1TxrSwTDKBJC4JZeIKj2X_UhP4vt-KwiVrn7ZJAPMcT_NboSpXBigfTuwtfBRavTmNgWv2ntLIRMg9TTkwFV4bY9u2nml1VCJWJexWl4UKxob7Uvs9Q8YrAKSQiKPZI7f3WiIgJK6-hemqnIZafN3AyQORGNRG9AU2j05rH_6APXsOpxNV6lIQdzjEjoTuf-mU2dNIo64qXLClawrLLukm9kv5O-efqmz4A7vChg3L55FMRPwdl2GL3RdRQlYrJyzo2eq7fZHPrzCzJ69z8"
-     const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
 
     e.preventDefault();
 

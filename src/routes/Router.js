@@ -31,7 +31,7 @@ const ThemeRoutes = [
       { path: "/starter", element: <ProtectedRoute element={<Starter />} /> },
       { path: "/login", element: <Login /> },
       { path: "/brokersList", element: <ProtectedRoute element={<BrokersList />} /> },
-      { path: "/editBroker", element: <ProtectedRoute element={<EditBroker />} /> },
+      { path: "/editBroker/:id", element: <ProtectedRoute element={<EditBroker />} /> },
       { path: "/users", element: <ProtectedRoute element={<Users />} /> },
       { path: "/carousel", element: <ProtectedRoute element={<Carousel />} /> },
       { path: "/banner", element: <ProtectedRoute element={<Banner />} /> },

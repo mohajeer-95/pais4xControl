@@ -20,11 +20,6 @@ const navigation = [
     icon: "bi bi-hdd-stack",
   },
   {
-    title: "Edit Broker",
-    href: "/editBroker",
-    icon: "bi bi-hdd-stack",
-  },
-  {
     title: "Carousel",
     href: "/carousel",
     icon: "bi bi-hdd-stack",
