@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Form, FormGroup, Label, Input, Button, Spinner, Table, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Form, FormGroup, Label, Input, Button, Spinner, Table, Modal, ModalHeader, ModalBody, ModalFooter, Col, Row } from "reactstrap";
 
 import { useParams } from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
-import {
-  GridRowModes,
-  DataGrid,
-  GridToolbarContainer,
-  GridActionsCellItem,
-  GridRowEditStopReasons,
-} from '@mui/x-data-grid';
 
 const BrokerForm = () => {
   const { id } = useParams();  // Get the id from the URL
@@ -20,6 +13,15 @@ const BrokerForm = () => {
   const [tradingCostInfo, setTradingCostInfo] = useState({});
   const [brokerAccountInfo, setBrokerAccountInfo] = useState({});
   const [brokerType, setBrokerType] = useState({});
+
+
+  const [images, setImages] = useState({ logo: '', image: '', video_image: '' });
+  const [modalImage, setModalImage] = useState(false);
+  const [currentImageType, setCurrentImageType] = useState('');
+  const [newImage, setNewImage] = useState(null);
+
+  const toggleModalImage = () => setModalImage(!modalImage);
+
 
   const [originalData, setOriginalData] = useState({});
   const [originalCashbackData, setOriginalCashbackData] = useState({});
@@ -40,7 +42,7 @@ const BrokerForm = () => {
   const [modal, setModal] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
   const [loadingTypeDelete, setLoadingTypeDelete] = useState(false); // For managing loading state
-  const [error, setError] = useState(null); 
+  const [error, setError] = useState(null);
 
   const [formData, setFormData] = useState({
     brokerType: "",
@@ -73,6 +75,12 @@ const BrokerForm = () => {
         const brokerAccount = data.broker.broker_account;
         const type = data.broker.broker_type;
         console.log('TYPE', type);
+
+        setImages({
+          logo: 'https://paid4x.com/broker/public/' + info.logo,
+          image: 'https://paid4x.com/broker/public/' + info.image,
+          video_image: 'https://paid4x.com/broker/public/' + info.video_image,
+        });
 
         setBrokerInfo(info);
         setCashbackInfo(cashback);
@@ -345,36 +353,111 @@ const BrokerForm = () => {
     setDeleteId(id);
     toggleModal();
   };
-    // Confirm deletion and call API
-    const confirmDelete = async () => {
-      setLoadingTypeDelete(true);
-      setError(null);
-      
-      try {
-        const response = await fetch(`https://paid4x.com/broker/public/api/broker-account-type/${deleteId}`, {
-          method: 'DELETE',
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,  // Include the Bearer token for authentication
-          }
-        });
-  
-        if (!response.ok) {
-          throw new Error('Failed to delete item');
+  // Confirm deletion and call API
+  const confirmDelete = async () => {
+    setLoadingTypeDelete(true);
+    setError(null);
+
+    try {
+      const response = await fetch(`https://paid4x.com/broker/public/api/broker-account-type/${deleteId}`, {
+        method: 'DELETE',
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,  // Include the Bearer token for authentication
         }
-  
-        // Update the table data after successful deletion
-        setBrokerType(brokerType?.filter(item => item.broker_account_type_id !== deleteId));
-  
-        // Close modal after successful deletion
-        toggleModal();
-      } catch (error) {
-        console.error('Error deleting item:', error);
-        setError('Error deleting item');
-      } finally {
-        setLoadingTypeDelete(false); // Stop the loading state
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to delete item');
       }
+
+      // Update the table data after successful deletion
+      setBrokerType(brokerType?.filter(item => item.broker_account_type_id !== deleteId));
+
+      // Close modal after successful deletion
+      toggleModal();
+    } catch (error) {
+      console.error('Error deleting item:', error);
+      setError('Error deleting item');
+    } finally {
+      setLoadingTypeDelete(false); // Stop the loading state
+    }
+  };
+
+
+
+
+
+  const handleImageUpdate = async () => {
+    if (!newImage || !currentImageType) return;
+
+    // Create headers and form data
+    const myHeaders = new Headers();
+    myHeaders.append('Authorization', `Bearer ${token}`);
+
+    const formData = new FormData();
+    formData.append(currentImageType, newImage);
+    formData.append("broker_id", id);
+
+    // Request options
+    const requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: formData,
+      redirect: 'follow',
     };
+
+    try {
+      const response = await fetch("https://paid4x.com/broker/public/api/update-broker-image", requestOptions);
+      const result = await response.json();
+      console.log(result);
+
+      if (result.status == 1) {
+
+
+        toggleModalImage();
+        alert("Broker Image updated successfully!");
+      } else {
+        toggleModalImage();
+        alert("Failed to update broker image.");
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  // Update image handler
+  const handleImageUpdateOLD = () => {
+    if (!newImage || !currentImageType) return;
+
+    const formData = new FormData();
+    formData.append(currentImageType, newImage);
+    formData.append('broker_id', id);
+
+    fetch(`https://paid4x.com/broker/public/api/update-broker-image/`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setImages((prevState) => ({
+          ...prevState,
+          [currentImageType]: data[currentImageType],
+        }));
+        toggleModalImage();
+      })
+      .catch((error) => console.error('Error updating image:', error));
+  };
+
+  // Open the modal for image editing
+  const openImageEditor = (imageType) => {
+    setCurrentImageType(imageType);
+    setNewImage(null);
+    toggleModalImage();
+  };
 
   const isBrokerSubmitDisabled = Object.keys(modifiedFields).length === 0 || submitting;
   const isCashbackSubmitDisabled = Object.keys(modifiedCashbackFields).length === 0 || submittingCashback;
@@ -388,8 +471,64 @@ const BrokerForm = () => {
       ) : (
         <>
 
+
+          <div className="text-center">
+            <Row>
+              <Col xs="4">
+              <img style={{ height: 150, borderRadius: 15 }} src={images.image} alt="Image" className="img-fluid" />
+              </Col>
+              <Col xs="4">
+              <img style={{ height: 150, borderRadius: 15  }} src={images.logo} alt="Image" className="img-fluid" />
+              </Col>
+              <Col xs="4">
+                <img style={{ height: 150, borderRadius: 15  }} src={images.video_image} alt="Image" className="img-fluid" />
+              </Col>
+            </Row>
+
+            <Modal isOpen={modalImage} toggle={toggleModalImage}>
+              <ModalHeader toggle={toggleModalImage}>Edit {currentImageType.replace('_', ' ')}</ModalHeader>
+              <ModalBody>
+                <Form>
+                  <FormGroup>
+                    <Label for="imageFile">Select new image</Label>
+                    <Input
+                      type="file"
+                      id="imageFile"
+                      onChange={(e) => setNewImage(e.target.files[0])}
+                    />
+                  </FormGroup>
+                </Form>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="primary" onClick={handleImageUpdate}>Update</Button>
+                <Button color="secondary" onClick={toggleModalImage}>Cancel</Button>
+              </ModalFooter>
+            </Modal>
+          </div>
+
+
+
+
+
+
+
+
           <Form onSubmit={handleSubmit}>
-            <h3>Add New Broker Account Type</h3>
+
+            <Row>
+              <Col xs="4">
+                <Button style={{ marginTop: 55 }} color="primary" onClick={() => openImageEditor('image')}>Edit Logo</Button>
+
+              </Col>
+              <Col xs="4">
+                <Button style={{ marginTop: 55 }} color="primary" onClick={() => openImageEditor('logo')}>Edit Carousel Image</Button>
+              </Col>
+              <Col xs="4">
+                <Button style={{ marginTop: 55 }} color="primary" onClick={() => openImageEditor('video_image')}>Edit Video Image</Button>
+              </Col>
+            </Row>
+
+            <h3 style={{ marginTop: 55 }}>Add New Broker Account Type</h3>
 
             <FormGroup>
               <Label for="brokerType">Broker Type</Label>
@@ -452,7 +591,7 @@ const BrokerForm = () => {
             </FormGroup>
 
             <FormGroup>
-              <Label for="Stocks">Stocks</Label>
+              <Label for="Stocks">Crypto</Label>
               <Input
                 type="text"
                 name="Stocks"
@@ -471,6 +610,8 @@ const BrokerForm = () => {
 
 
           {brokerType?.length && <div>
+            <h3>Edit Account types</h3>
+
             <Table bordered>
               <thead>
                 <tr>
