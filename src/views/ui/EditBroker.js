@@ -3,16 +3,20 @@ import { Form, FormGroup, Label, Input, Button, Spinner, Table, Modal, ModalHead
 
 import { useParams } from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
+import { useNavigate } from "react-router-dom";
 
 const BrokerForm = () => {
   const { id } = useParams();  // Get the id from the URL
+  const navigate = useNavigate();
 
-  const [bId, setBId] = useState(null);
-  const [brokerInfo, setBrokerInfo] = useState({});
-  const [cashbackInfo, setCashbackInfo] = useState({});
-  const [tradingCostInfo, setTradingCostInfo] = useState({});
-  const [brokerAccountInfo, setBrokerAccountInfo] = useState({});
-  const [brokerType, setBrokerType] = useState({});
+    const [bId, setBId] = useState(null);
+    const [brokerInfo, setBrokerInfo] = useState({});
+    const [cashbackInfo, setCashbackInfo] = useState({});
+    const [tradingCostInfo, setTradingCostInfo] = useState({});
+    const [tradingCostId, setTradingCostId] = useState({});
+    const [brokerAccountInfo, setBrokerAccountInfo] = useState({});
+    const [brokerAccountId, setBrokerAccountId] = useState({});
+    const [brokerType, setBrokerType] = useState({});
 
 
   const [images, setImages] = useState({ logo: '', image: '', video_image: '' });
@@ -50,7 +54,13 @@ const BrokerForm = () => {
     Metals: "",
     Energies: "",
     Indicies: "",
-    Stocks: ""
+    Stocks: "",
+    brokerType_ar: "",
+    FX_ar: "",
+    Metals_ar: "",
+    Energies_ar: "",
+    Indicies_ar: "",
+    Stocks_ar: ""
   });
   const [submittingType, setSubmittingType] = useState(false);
   const [loadingType, setLoadingType] = useState(false);
@@ -64,7 +74,8 @@ const BrokerForm = () => {
     setLoading(true);
     fetch(`https://paid4x.com/broker/public/api/broker/${id}`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        "Accept-Language": 'en',
+        "Authorization": `Bearer ${token}`,
       },
     })
       .then((response) => response.json())
@@ -72,7 +83,9 @@ const BrokerForm = () => {
         const info = data.broker.info;
         const cashback = data.broker.broker_cashback_info;
         const tradingCost = data.broker.trading_cost;
+        const tradingCostId = data.broker.trading_cost.trading_cost;
         const brokerAccount = data.broker.broker_account;
+        const brokerAccountId = data.broker.broker_account.broker_account_id;
         const type = data.broker.broker_type;
         console.log('TYPE', type);
 
@@ -85,7 +98,9 @@ const BrokerForm = () => {
         setBrokerInfo(info);
         setCashbackInfo(cashback);
         setTradingCostInfo(tradingCost);
+        setTradingCostId(tradingCostId);
         setBrokerAccountInfo(brokerAccount);
+        setBrokerAccountId(brokerAccountId);
         setBrokerType(type);
 
         setOriginalData(info); // Keep original for comparison
@@ -180,6 +195,7 @@ const BrokerForm = () => {
       alert("No changes to submit.");
       return;
     }
+    console.log('modifiedFields', modifiedFields);
 
     setSubmitting(true);
     fetch(`https://paid4x.com/broker/public/api/broker/${id}`, {
@@ -234,7 +250,7 @@ const BrokerForm = () => {
     }
 
     setSubmittingTradingCost(true);
-    fetch(`https://paid4x.com/broker/public/api/broker-trading-cost/${id}`, {
+    fetch(`https://paid4x.com/broker/public/api/broker-trading-cost/${tradingCostId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -260,7 +276,7 @@ const BrokerForm = () => {
     }
 
     setSubmittingBrokerAccount(true);
-    fetch(`https://paid4x.com/broker/public/api/broker-account/${id}`, {
+    fetch(`https://paid4x.com/broker/public/api/broker-account/${brokerAccountId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -305,7 +321,13 @@ const BrokerForm = () => {
     metals: formData.Metals,
     energies: formData.Energies,
     indicies: formData.Indicies,
-    crypto: formData.Stocks
+    crypto: formData.Stocks,
+    type_name_ar: formData.brokerType_ar,
+    forex_ar: formData.FX_ar,
+    metals_ar: formData.Metals_ar,
+    energies_ar: formData.Energies_ar,
+    indicies_ar: formData.Indicies_ar,
+    crypto_ar: formData.Stocks_ar
   }
   // Submit the form to the API
   const handleSubmit = (e) => {
@@ -330,7 +352,13 @@ const BrokerForm = () => {
           Metals: "",
           Energies: "",
           Indicies: "",
-          Stocks: ""
+          Stocks: "",
+          brokerType_ar: "",
+          FX_ar: "",
+          Metals_ar: "",
+          Energies_ar: "",
+          Indicies_ar: "",
+          Stocks_ar: ""
         });
       })
       .catch((error) => {
@@ -459,6 +487,9 @@ const BrokerForm = () => {
     toggleModalImage();
   };
 
+  const handleArEditClick = () => () => {
+    navigate(`/editBrokerAr/${id}`);
+  }
   const isBrokerSubmitDisabled = Object.keys(modifiedFields).length === 0 || submitting;
   const isCashbackSubmitDisabled = Object.keys(modifiedCashbackFields).length === 0 || submittingCashback;
   const isTradingCostSubmitDisabled = Object.keys(modifiedTradingCostFields).length === 0 || submittingTradingCost;
@@ -471,17 +502,20 @@ const BrokerForm = () => {
       ) : (
         <>
 
+          <div onClick={handleArEditClick()} style={{ cursor: "pointer", padding: 20, backgroundColor: 'rgb(38, 198, 218)', borderRadius: 9, marginTop: 10, marginBottom: 40, alignItems: 'center', textAlign: 'center' }}>
+            <h3>For Arabic Language Click here</h3>
+          </div>
 
           <div className="text-center">
             <Row>
               <Col xs="4">
-              <img style={{ height: 150, borderRadius: 15 }} src={images.image} alt="Image" className="img-fluid" />
+                <img style={{ height: 150, borderRadius: 15 }} src={images.image} alt="Image" className="img-fluid" />
               </Col>
               <Col xs="4">
-              <img style={{ height: 150, borderRadius: 15  }} src={images.logo} alt="Image" className="img-fluid" />
+                <img style={{ height: 150, borderRadius: 15 }} src={images.logo} alt="Image" className="img-fluid" />
               </Col>
               <Col xs="4">
-                <img style={{ height: 150, borderRadius: 15  }} src={images.video_image} alt="Image" className="img-fluid" />
+                <img style={{ height: 150, borderRadius: 15 }} src={images.video_image} alt="Image" className="img-fluid" />
               </Col>
             </Row>
 
@@ -597,6 +631,79 @@ const BrokerForm = () => {
                 name="Stocks"
                 id="Stocks"
                 value={formData.Stocks}
+                onChange={handleInputChange}
+                required
+              />
+            </FormGroup>
+
+            
+            <FormGroup>
+              <Label for="brokerType_ar">Broker Type Arabic</Label>
+              <Input
+                type="text"
+                name="brokerType_ar"
+                id="brokerType_ar"
+                value={formData.brokerType_ar}
+                onChange={handleInputChange}
+                required
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <Label for="FX_ar">FX Arabic</Label>
+              <Input
+                type="text"
+                name="FX_ar"
+                id="FX_ar"
+                value={formData.FX_ar}
+                onChange={handleInputChange}
+                required
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <Label for="Metals_ar">Metals Arabic</Label>
+              <Input
+                type="text"
+                name="Metals_ar"
+                id="Metals_ar"
+                value={formData.Metals_ar}
+                onChange={handleInputChange}
+                required
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <Label for="Energies_ar">Energies Arabic</Label>
+              <Input
+                type="text"
+                name="Energies_ar"
+                id="Energies_ar"
+                value={formData.Energies_ar}
+                onChange={handleInputChange}
+                required
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <Label for="Indicies_ar">Indicies Arabic</Label>
+              <Input
+                type="text"
+                name="Indicies_ar"
+                id="Indicies_ar"
+                value={formData.Indicies_ar}
+                onChange={handleInputChange}
+                required
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <Label for="Stocks_ar">Crypto Arabic</Label>
+              <Input
+                type="text"
+                name="Stocks_ar"
+                id="Stocks_ar"
+                value={formData.Stocks_ar}
                 onChange={handleInputChange}
                 required
               />

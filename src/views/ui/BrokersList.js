@@ -30,78 +30,255 @@ const initialFormAccountType = {
   account_type_maximum_trading_size: '',
   broker_id: 0,
 }
-const initialEditForm = {
 
-}
-
-
-
+// const initialFormData = {
+//   name: "",
+//   nameAr: "",
+//   email: "",
+//   emailAr: "",
+//   description: "",
+//   descriptionAr: "",
+//   cashback: "",
+//   cashbackAr: "",
+//   account_currency: "",
+//   account_currencyAr: "",
+//   currency: "",
+//   currencyAr: "",
+//   title: "",
+//   titleAr: "",
+//   entity_name: "",
+//   entity_nameAr: "",
+//   broker_type: "",
+//   broker_typeAr: "",
+//   branch_offices: "",
+//   branch_officesAr: "",
+//   headquarters: "",
+//   headquartersAr: "",
+//   bonus: "",
+//   bonusAr: "",
+//   islamic_accounts: "",
+//   islamic_accountsAr: "",
+//   trailing_stop: "",
+//   trailing_stopAr: "",
+//   hedging: "",
+//   hedgingAr: "",
+//   scalping: "",
+//   scalpingAr: "",
+//   ea: "",
+//   eaAr: "",
+//   segregated_accounts: "",
+//   segregated_accountsAr: "",
+//   number_of_instruments: "",
+//   number_of_instrumentsAr: "",
+//   categories_of_instruments: "",
+//   categories_of_instrumentsAr: "",
+//   channels: "",
+//   channelsAr: "",
+//   hours: "",
+//   hoursAr: "",
+//   languages: "",
+//   languagesAr: "",
+//   pc_platforms: "",
+//   pc_platformsAr: "",
+//   mobile_platforms: "",
+//   mobile_platformsAr: "",
+//   demo_period: "",
+//   demo_periodAr: "",
+//   MAM_PAMM: "",
+//   MAM_PAMMAr: "",
+//   leverage_levels: "",
+//   leverage_levelsAr: "",
+//   margin_call_evel: "",
+//   margin_call_evelAr: "",
+//   stop_out_level: "",
+//   stop_out_levelAr: "",
+//   closing_method_stop_out: "",
+//   closing_method_stop_outAr: "",
+//   avg_spread_on_EURUSD_val_1: "",
+//   avg_spread_on_EURUSD_val_1Ar: "",
+//   avg_spread_on_EURUSD_val_2: "",
+//   avg_spread_on_EURUSD_val_2Ar: "",
+//   avg_spread_on_EURUSD_val_3: "",
+//   avg_spread_on_EURUSD_val_3Ar: "",
+//   commissions_on_FX_val_1: "",
+//   commissions_on_FX_val_1Ar: "",
+//   commissions_on_FX_val_2: "",
+//   commissions_on_FX_val_2Ar: "",
+//   commissions_on_FX_val_3: "",
+//   commissions_on_FX_val_3Ar: "",
+//   FX_margin_bonus: "",
+//   FX_margin_bonusAr: "",
+//   FX_scalping_account: "",
+//   FX_scalping_accountAr: "",
+//   FX_floating_bonus: "",
+//   FX_floating_bonusAr: "",
+//   metals_margin_bonus: "",
+//   metals_margin_bonusAr: "",
+//   metals_floating_bonus: "",
+//   metals_floating_bonusAr: "",
+//   metals_scalping_account: "",
+//   metals_scalping_accountAr: "",
+//   energies_margin_bonus: "",
+//   energies_margin_bonusAr: "",
+//   energies_floating_bonus: "",
+//   energies_floating_bonusAr: "",
+//   energies_scalping_account: "",
+//   energies_scalping_accountAr: "",
+//   indicies_margin_bonus: "",
+//   indicies_margin_bonusAr: "",
+//   indicies_scalping_account: "",
+//   indicies_scalping_accountAr: "",
+//   indicies_floating_bonus: "",
+//   indicies_floating_bonusAr: "",
+//   stocks_margin_bonus: "",
+//   stocks_margin_bonusAr: "",
+//   stocks_floating_bonus: "",
+//   stocks_floating_bonusAr: "",
+//   stocks_scalping_account: "",
+//   stocks_scalping_accountAr: "",
+//   minimum_deposit_val1: "",
+//   minimum_deposit_val1Ar: "",
+//   minimum_deposit_val2: "",
+//   minimum_deposit_val2Ar: "",
+//   minimum_deposit_val3: "",
+//   minimum_deposit_val3Ar: "",
+//   payment_methods: "",
+//   payment_methodsAr: "",
+//   youtube_link: "",
+//   whatsapp_link: "",
+//   twitter_link: "",
+//   instagram_link: "",
+//   facebook_link: "",
+//   linkedin_link: "",
+// };
 
 
 const initialFormData = {
-  name: "",
-  email: "",
-  description: "",
-  cashback: "",
-  account_currency: "",
-  currency: "",
-  title: "",
-  entity_name: "",
-  broker_type: "",
-  branch_offices: "",
-  headquarters: "",
-  bonus: "",
-  islamic_accounts: "",
-  trailing_stop: "",
-  hedging: "",
-  scalping: "",
-  ea: "",
-  segregated_accounts: "",
-  number_of_instruments: "",
-  categories_of_instruments: "",
-  channels: "",
-  hours: "",
-  languages: "",
-  pc_platforms: "",
-  mobile_platforms: "",
-  demo_period: "",
-  MAM_PAMM: "",
-  leverage_levels: "",
-  margin_call_evel: "",
-  stop_out_level: "",
-  closing_method_stop_out: "",
-  avg_spread_on_EURUSD_val_1: "",
-  avg_spread_on_EURUSD_val_2: "",
-  avg_spread_on_EURUSD_val_3: "",
-  commissions_on_FX_val_1: "",
-  commissions_on_FX_val_2: "",
-  commissions_on_FX_val_3: "",
-  FX_margin_bonus: "",
-  FX_scalping_account: "",
-  FX_floating_bonus: "",
-  metals_margin_bonus: "",
-  metals_floating_bonus: "",
-  metals_scalping_account: "",
-  energies_margin_bonus: "",
-  energies_floating_bonus: "",
-  energies_scalping_account: "",
-  indicies_margin_bonus: "",
-  indicies_scalping_account: "",
-  indicies_floating_bonus: "",
-  stocks_margin_bonus: "",
-  stocks_floating_bonus: "",
-  stocks_scalping_account: "",
-  minimum_deposit_val1: "",
-  minimum_deposit_val2: "",
-  minimum_deposit_val3: "",
-  payment_methods: "",
-  youtube_link: "",
-  whatsapp_link: "",
-  twitter_link: "",
-  instagram_link: "",
-  facebook_link: "",
-  linkedin_link: "",
+  name: "XYZ Brokerage",
+  name_ar: "شركة XYZ للوساطة",
+  email: "contact@xyzbrokerage.com",
+  email_ar: "contact@xyzbrokerage.com",
+  description: "XYZ Brokerage is a leading provider of online trading services.",
+  description_ar: "شركة XYZ للوساطة هي مزود رائد لخدمات التداول عبر الإنترنت.",
+  cashback: "Up to $100 cashback for each trade",
+  cashback_ar: "استرداد نقدي يصل إلى 100 دولار لكل عملية تداول",
+  account_currency: "USD, EUR, GBP",
+  account_currency_ar: "الدولار الأمريكي، اليورو، الجنيه الإسترليني",
+  currency: "USD",
+  currency_ar: "الدولار الأمريكي",
+  title: "Best Forex Broker",
+  title_ar: "أفضل وسيط فوركس",
+  entity_name: "XYZ Financial Services Ltd.",
+  entity_name_ar: "خدمات XYZ المالية المحدودة",
+  broker_type: "Market Maker",
+  broker_type_ar: "صانع السوق",
+  branch_offices: "London, New York, Dubai",
+  branch_offices_ar: "لندن، نيويورك، دبي",
+  headquarters: "London, UK",
+  headquarters_ar: "لندن، المملكة المتحدة",
+  bonus: "20% deposit bonus",
+  bonus_ar: "20% مكافأة على الإيداع",
+  islamic_accounts: "Yes",
+  islamic_accounts_ar: "نعم",
+  trailing_stop: "Available",
+  trailing_stop_ar: "متاح",
+  hedging: "Allowed",
+  hedging_ar: "مسموح",
+  scalping: "Allowed",
+  scalping_ar: "مسموح",
+  ea: "Supported",
+  ea_ar: "مدعوم",
+  segregated_accounts: "Yes",
+  segregated_accounts_ar: "نعم",
+  number_of_instruments: "200+",
+  number_of_instruments_ar: "أكثر من 200",
+  categories_of_instruments: "Forex, Commodities, Stocks, Indices",
+  categories_of_instruments_ar: "الفوركس، السلع، الأسهم، المؤشرات",
+  channels: "Email, Live Chat, Phone",
+  channels_ar: "البريد الإلكتروني، الدردشة المباشرة، الهاتف",
+  hours: "24/5",
+  hours_ar: "24/5",
+  languages: "English, Arabic, Spanish",
+  languages_ar: "الإنجليزية، العربية، الإسبانية",
+  pc_platforms: "MetaTrader 4, MetaTrader 5",
+  pc_platforms_ar: "ميتاتريدر 4، ميتاتريدر 5",
+  mobile_platforms: "iOS, Android",
+  mobile_platforms_ar: "آي أو إس، أندرويد",
+  demo_period: "30 days",
+  demo_period_ar: "30 يومًا",
+  MAM_PAMM: "Available",
+  MAM_PAMM_ar: "متاح",
+  leverage_levels: "1:500",
+  leverage_levels_ar: "1:500",
+  margin_call_evel: "50%",
+  margin_call_evel_ar: "50%",
+  stop_out_level: "20%",
+  stop_out_level_ar: "20%",
+  closing_method_stop_out: "Positions closed starting from highest margin",
+  closing_method_stop_out_ar: "إغلاق المراكز بدءًا من أعلى هامش",
+  avg_spread_on_EURUSD_val_1: "0.8 pips",
+  avg_spread_on_EURUSD_val_1_ar: "0.8 نقطة",
+  avg_spread_on_EURUSD_val_2: "1.2 pips",
+  avg_spread_on_EURUSD_val_2_ar: "1.2 نقطة",
+  avg_spread_on_EURUSD_val_3: "1.5 pips",
+  avg_spread_on_EURUSD_val_3_ar: "1.5 نقطة",
+  commissions_on_FX_val_1: "$3 per lot",
+  commissions_on_FX_val_1_ar: "3 دولارات لكل لوت",
+  commissions_on_FX_val_2: "$4 per lot",
+  commissions_on_FX_val_2_ar: "4 دولارات لكل لوت",
+  commissions_on_FX_val_3: "$5 per lot",
+  commissions_on_FX_val_3_ar: "5 دولارات لكل لوت",
+  FX_margin_bonus: "Yes",
+  FX_margin_bonus_ar: "نعم",
+  FX_scalping_account: "Yes",
+  FX_scalping_account_ar: "نعم",
+  FX_floating_bonus: "No",
+  FX_floating_bonus_ar: "لا",
+  metals_margin_bonus: "Yes",
+  metals_margin_bonus_ar: "نعم",
+  metals_floating_bonus: "No",
+  metals_floating_bonus_ar: "لا",
+  metals_scalping_account: "Yes",
+  metals_scalping_account_ar: "نعم",
+  energies_margin_bonus: "No",
+  energies_margin_bonus_ar: "لا",
+  energies_floating_bonus: "No",
+  energies_floating_bonus_ar: "لا",
+  energies_scalping_account: "Yes",
+  energies_scalping_account_ar: "نعم",
+  indicies_margin_bonus: "Yes",
+  indicies_margin_bonus_ar: "نعم",
+  indicies_scalping_account: "Yes",
+  indicies_scalping_account_ar: "نعم",
+  indicies_floating_bonus: "No",
+  indicies_floating_bonus_ar: "لا",
+  stocks_margin_bonus: "No",
+  stocks_margin_bonus_ar: "لا",
+  stocks_floating_bonus: "No",
+  stocks_floating_bonus_ar: "لا",
+  stocks_scalping_account: "Yes",
+  stocks_scalping_account_ar: "نعم",
+  minimum_deposit_val1: "$100",
+  minimum_deposit_val1_ar: "100 دولار",
+  minimum_deposit_val2: "$500",
+  minimum_deposit_val2_ar: "500 دولار",
+  minimum_deposit_val3: "$1000",
+  minimum_deposit_val3_ar: "1000 دولار",
+  payment_methods: "Credit Card, Bank Transfer, PayPal",
+  payment_methods_ar: "بطاقة الائتمان، التحويل البنكي، باي بال",
+  youtube_link: "https://youtube.com/xyzbrokerage",
+  whatsapp_link: "https://wa.me/123456789",
+  twitter_link: "https://twitter.com/xyzbrokerage",
+  instagram_link: "https://instagram.com/xyzbrokerage",
+  facebook_link: "https://facebook.com/xyzbrokerage",
+  linkedin_link: "https://linkedin.com/company/xyzbrokerage",
+  site_link: "https://xyzbrokerage.com",
+  live_chat_link: "https://xyzbrokerage.com/live-chat",
+  email_link: "mailto",
+  telegram_link: "https://t.me/xyzbrokerage",
+
 };
+
 
 const currencyOptions = [
   { value: 'dollar', label: 'Dollar' },
@@ -109,6 +286,11 @@ const currencyOptions = [
   { value: 'p', label: 'P' },
 ];
 
+const currencyArOptions = [
+  { value: 'دولار', label: 'دولار' },
+  { value: 'دينار', label: 'دينار' },
+  { value: 'p', label: 'P' },
+];
 const BrokersList = () => {
   const navigate = useNavigate();
 
@@ -168,6 +350,12 @@ const BrokersList = () => {
   const handleCurrencyChange = (e) => {
     const { value } = e.target;
     setFormData(prevState => ({ ...prevState, currency: value }));
+  };
+
+  
+  const handleCurrencyArChange = (e) => {
+    const { value } = e.target;
+    setFormData(prevState => ({ ...prevState, currency_ar: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -811,39 +999,60 @@ const BrokersList = () => {
                         </FormGroup>
 
 
-                        {Object.keys(formData)?.map((fieldName, index) => (
-                          <FormGroup key={index}>
-                            <Label for={fieldName}>{fieldName.replace(/_/g, ' ')}</Label>
-                            {fieldName === 'currency' ? (
-                              <Input
-                                type="select"
-                                id={fieldName}
-                                name={fieldName}
-                                value={formData[fieldName]}
-                                onChange={handleCurrencyChange}
-                              >
-                                <option value="">Select Currency</option>
-                                {currencyOptions?.map(option => (
-                                  <option key={option.value} value={option.value}>
-                                    {option.label}
-                                  </option>
-                                ))}
-                              </Input>
-                            ) : (
-                              <Input
-                                type={fieldName === 'description' ? "textarea" : "text"}
-                                id={fieldName}
-                                name={fieldName}
-                                value={formData[fieldName]}
-                                onChange={handleInputChange}
-                                invalid={formErrors[fieldName] !== undefined}
-                                disabled={(fieldName == 'broker_id') || (fieldName == 'logo') || (fieldName == 'image') || (fieldName == 'avg_rating') || (fieldName == 'id') ? true : false}
+                        <Row>
+                          {Object.keys(formData)?.map((fieldName, index) => (
+                            <Col key={index} md={index < 62 ? "6" : "6"} className={index < 62 ? "text-left" : "text-right"}>
+                              <FormGroup>
+                                <Label for={fieldName}>
+                                  {fieldName.endsWith("Ar") ? (
+                                    <>
+                                      {fieldName.replace(/_/g, ' ').replace("Ar", "")}
+                                      <span style={{ color: "rgb(38, 198, 218)" }}> (Arabic)</span>
+                                    </>
+                                  ) : (
+                                    fieldName.replace(/_/g, ' ')
+                                  )}
+                                </Label>
+                                {fieldName === 'currency' || fieldName === 'currency_ar' ? (
+                                  <Input
+                                    type="select"
+                                    id={fieldName}
+                                    name={fieldName}
+                                    value={formData[fieldName]}
+                                    onChange={fieldName === 'currency' ? handleCurrencyChange : handleCurrencyArChange}
+                                  >
+                                    <option value="">Select Currency</option>
+                                    {fieldName === 'currency' && currencyOptions?.map(option => (
+                                      <option key={option.value} value={option.value}>
+                                        {option.label}
+                                      </option>
+                                    ))}
+                                    {fieldName === 'currency_ar' && currencyArOptions?.map(option => (
+                                      <option key={option.value} value={option.value}>
+                                        {option.label}
+                                      </option>
+                                    ))}
+                                  </Input>
+                                ) : (
+                                  <Input
+                                    type={fieldName === 'description' || fieldName === 'description_ar' ? "textarea" : "text"}
+                                    id={fieldName}
+                                    name={fieldName}
+                                    value={formData[fieldName]}
+                                    onChange={handleInputChange}
+                                    invalid={formErrors[fieldName] !== undefined}
+                                    disabled={['broker_id', 'logo', 'image', 'avg_rating', 'id'].includes(fieldName)}
+                                  />
+                                )}
+                                {formErrors[fieldName] && <Alert color="danger">{formErrors[fieldName]}</Alert>}
+                              </FormGroup>
+                            </Col>
+                          ))}
+                        </Row>
 
-                              />
-                            )}
-                            {formErrors[fieldName] && <Alert color="danger">{formErrors[fieldName]}</Alert>}
-                          </FormGroup>
-                        ))}
+
+
+
                         {modeIs != 2 && <Button style={{ backgroundColor: '#26c6da', color: '#ffffff' }} type="submit">Submit</Button>}
                         {addError && <div className="alert alert-danger mt-3" role="alert">{addError}</div>}
                         {loadingAddEdit == 2 ? <Alert style={{ marginTop: 15, marginBottom: 40 }} color="success">{modeIs === 2 ? 'Edit successfuly' : 'Add successfuly'}</Alert> : loadingAddEdit == 1 ?
@@ -860,60 +1069,6 @@ const BrokersList = () => {
                       </div>}
 
                   </div>
-                  {modeIs === 2 && !loading &&
-                    <div style={{ marginTop: 30 }}>
-                      <div className="dev-row" style={{ marginBottom: 10 }}></div>
-                      <h1>Add Account Type</h1>
-                      <Container>
-                        <Form onSubmit={handleSubmitAccountType}>
-                          <FormGroup>
-                            <Label for="account_type">Account Type</Label>
-                            <Input
-                              type="text"
-                              name="account_type"
-                              id="account_type"
-                              value={accountType.account_type}
-                              onChange={handleChangeType}
-                              invalid={!!errorsAccountType.account_type}
-                            />
-                            {errorsAccountType.account_type && <Alert color="danger">{errorsAccountType.account_type}</Alert>}
-                          </FormGroup>
-
-                          <FormGroup>
-                            <Label for="account_type_minimum_trading_size">Minimum Trading Size</Label>
-                            <Input
-                              type="text"
-                              name="account_type_minimum_trading_size"
-                              id="account_type_minimum_trading_size"
-                              value={accountType.account_type_minimum_trading_size}
-                              onChange={handleChangeType}
-                              invalid={!!errorsAccountType.account_type_minimum_trading_size}
-                            />
-                            {errorsAccountType.account_type_minimum_trading_size && <Alert color="danger">{errorsAccountType.account_type_minimum_trading_size}</Alert>}
-
-                          </FormGroup>
-
-                          <FormGroup>
-                            <Label for="account_type_maximum_trading_size">Maximum Trading Size</Label>
-                            <Input
-                              type="text"
-                              name="account_type_maximum_trading_size"
-                              id="account_type_maximum_trading_size"
-                              value={accountType.account_type_maximum_trading_size}
-                              onChange={handleChangeType}
-                              invalid={!!errorsAccountType.account_type_maximum_trading_size}
-                            />
-                            {errorsAccountType.account_type_maximum_trading_size && <Alert color="danger">{errorsAccountType.account_type_maximum_trading_size}</Alert>}
-                          </FormGroup>
-                          {success && <Alert style={{ marginTop: 15, marginBottom: 40 }} color="success">Add successfuly</Alert>}
-
-                          <Button style={{ backgroundColor: '#26c6da', color: '#ffffff' }} type="submit">Save</Button>
-                          <Button style={{ backgroundColor: '#e57373', color: '#ffffff', marginLeft: 10 }} onClick={() => setModeIs(0)}>Cancel</Button>
-                        </Form>
-
-                      </Container>
-                    </div>
-                  }
                 </CardBody>
               )}
             </Card>

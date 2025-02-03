@@ -19,6 +19,7 @@ import RequestLinks from "../views/ui/RequestLinks"
 import CashBackList from "../views/ui/cashBackList"
 import PaymentList from "../views/ui/paymentList"
 import EditBroker from "../views/ui/EditBroker"
+import EditBrokerAr from "../views/ui/EditBrokerAr"
 
 /*****Routes******/
 
@@ -32,6 +33,7 @@ const ThemeRoutes = [
       { path: "/login", element: <Login /> },
       { path: "/brokersList", element: <ProtectedRoute element={<BrokersList />} /> },
       { path: "/editBroker/:id", element: <ProtectedRoute element={<EditBroker />} /> },
+      { path: "/editBrokerAr/:id", element: <ProtectedRoute element={<EditBrokerAr />} /> },
       { path: "/users", element: <ProtectedRoute element={<Users />} /> },
       { path: "/carousel", element: <ProtectedRoute element={<Carousel />} /> },
       { path: "/banner", element: <ProtectedRoute element={<Banner />} /> },
